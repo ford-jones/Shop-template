@@ -1,23 +1,23 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { fetchFruits, selectFruits } from '../slices/fruits'
+import { fetchJewelery, selectJewelery } from '../slices/jewelery'
 
 function App() {
-  const fruits = useSelector(selectFruits)
+  const jewelery = useSelector(selectJewelery)
   const dispatch = useDispatch()
 
   useEffect(async () => {
-    await dispatch(fetchFruits())
+    await dispatch(fetchJewelery())
   }, [])
 
   return (
     <>
       <div className="app">
-        <h1>Fullstack Boilerplate - with Fruits!</h1>
+        <h1> STGMATA </h1>
         <ul>
-          {fruits.map((fruit) => (
-            <li key={fruit}>{fruit}</li>
+          {jewelery.map((jewel) => (
+            <li key={jewel}>{jewel}</li>
           ))}
         </ul>
       </div>
