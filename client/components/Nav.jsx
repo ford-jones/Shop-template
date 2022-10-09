@@ -5,15 +5,34 @@ function Nav() {
   return (
     <>
       <div className="nav">
-        <section className="header">
-          <h1> STGMATA </h1>
+        <section className="headerBox">
+          <h1 className="header"> STGMATA </h1>
         </section>
-        <section className="links">
+        <section className="linkBox">
           <span>
-            <Link to="/shop">Shop</Link>
-            <Link to="/about">About</Link>
-            <Link to="/faq">FAQ</Link>
-            <Link to="/contact">Contact</Link>
+            <Link to="/" className="link">
+              Home
+            </Link>
+            <Outlet />
+            <Link to="/shop" className="link">
+              Shop
+            </Link>
+            <Outlet />
+            <Link to="/about" className="link">
+              About
+            </Link>
+            <Outlet />
+            <Link to="/contact" className="link">
+              Contact
+            </Link>
+            <Outlet />
+            <Link to="/faq" className="link">
+              FAQ
+            </Link>
+            <Outlet />
+            <Link to="/cart" className="link">
+              Cart
+            </Link>
             <Outlet />
           </span>
         </section>
