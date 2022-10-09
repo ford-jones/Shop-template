@@ -5,9 +5,6 @@ function Nav() {
   return (
     <>
       <div className="nav">
-        <section className="headerBox">
-          <h1 className="header"> STGMATA </h1>
-        </section>
         <section className="linkBox">
           <span>
             <Link to="/" className="link">

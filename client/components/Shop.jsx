@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
+import Nav from './Nav'
+
 import { fetchJewelery, selectJewelery } from '../slices/jewelery'
 
 export default function Shop() {
@@ -13,6 +15,8 @@ export default function Shop() {
 
   return (
     <>
+      <h1 className="header">Shop</h1>
+      <Nav />
       <ul>
         {jewelery.map((jewel) => (
           <li key={jewel}>{jewel}</li>
