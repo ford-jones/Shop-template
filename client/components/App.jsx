@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
+import Nav from './Nav'
+
 import { fetchJewelery, selectJewelery } from '../slices/jewelery'
 
 function App() {
@@ -14,7 +16,7 @@ function App() {
   return (
     <>
       <div className="app">
-        <h1> STGMATA </h1>
+        <Nav />
         <ul>
           {jewelery.map((jewel) => (
             <li key={jewel}>{jewel}</li>
