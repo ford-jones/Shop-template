@@ -17,11 +17,19 @@ export default function Shop() {
     <>
       <h1 className="header">Shop</h1>
       <Nav />
-      <ul>
-        {jewelery.map((jewel) => (
-          <li key={jewel}>{jewel}</li>
-        ))}
-      </ul>
+      {jewelery.map((jewel) => (
+        <>
+          <div className="shopItem">
+            <ul key={jewel.id}>
+              <li>{jewel.name}</li>
+              <li>{jewel.materials}</li>
+              <li>{jewel.description}</li>
+              <li>{jewel.weight}</li>
+              <li>{jewel.price}</li>
+            </ul>
+          </div>
+        </>
+      ))}
     </>
   )
 }
