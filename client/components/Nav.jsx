@@ -7,27 +7,27 @@ function Nav() {
       <div className="nav">
         <section className="linkBox">
           <span>
-            <Link to="/" className="link">
+            <Link to="/" className="navLink">
               Home
             </Link>
             <Outlet />
-            <Link to="/shop" className="link">
+            <Link to="/shop" className="navLink">
               Shop
             </Link>
             <Outlet />
-            <Link to="/about" className="link">
+            <Link to="/about" className="navLink">
               About
             </Link>
             <Outlet />
-            <Link to="/contact" className="link">
+            <Link to="/contact" className="navLink">
               Contact
             </Link>
             <Outlet />
-            <Link to="/faq" className="link">
+            <Link to="/faq" className="navLink">
               FAQ
             </Link>
             <Outlet />
-            <Link to="/cart" className="link">
+            <Link to="/cart" className="navLink">
               Cart
             </Link>
             <Outlet />

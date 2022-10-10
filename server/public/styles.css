@@ -17,7 +17,10 @@ body {
   text-align: center;
   background-color: azure;
   padding: 10px;
-  
+}
+
+.navLink {
+  margin: 10px;
 }
 
 .home {
@@ -28,6 +31,17 @@ body {
   padding: 10px;
   margin: 0px;
   z-index: 0;
+}
+
+.stgmataHome {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 90px;
+  font-style: italic;
+  letter-spacing: 30px;
+  margin-top: 300px;
+  margin-bottom: 0;
+  color: whitesmoke;
+
 }
 
 
