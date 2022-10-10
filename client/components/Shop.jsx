@@ -19,7 +19,7 @@ export default function Shop() {
       <Nav />
       <ul>
         {jewelery.map((jewel) => (
-          <li key={jewel}>{jewel}</li>
+          <li key={jewel.id}>{jewel.name}</li>
         ))}
       </ul>
     </>
