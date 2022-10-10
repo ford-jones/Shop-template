@@ -13,13 +13,18 @@ export default function Shop() {
     await dispatch(fetchJewelery())
   }, [])
 
+  function handleClick(event) {
+    event.preventDefault()
+    console.log('hit')
+  }
+
   return (
     <>
       <h1 className="header">Shop</h1>
       <Nav />
       {jewelery.map((jewel) => (
         <>
-          <div className="shopItem">
+          <div className="shopItem" onClick={handleClick}>
             <ul key={jewel.id}>
               <li>{jewel.name}</li>
               <li>{jewel.materials}</li>
