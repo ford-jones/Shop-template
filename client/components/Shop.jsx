@@ -26,6 +26,7 @@ export default function Shop() {
         <>
           <div className="shopItem" onClick={handleClick}>
             <ul key={jewel.id}>
+              <img src={`/images/grill${jewel.id}.png`} alt="jewelPhoto" />
               <li>{jewel.name}</li>
               <li>{jewel.materials}</li>
               <li>{jewel.description}</li>
@@ -38,3 +39,4 @@ export default function Shop() {
     </>
   )
 }
+// process.env.PUBLIC_URL + `/grill${jewel.id}.png`
