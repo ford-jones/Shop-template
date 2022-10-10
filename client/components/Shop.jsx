@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 
 import Nav from './Nav'
@@ -8,6 +9,7 @@ import { fetchJewelery, selectJewelery } from '../slices/jewelery'
 export default function Shop() {
   const jewelery = useSelector(selectJewelery)
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   useEffect(async () => {
     await dispatch(fetchJewelery())
@@ -15,6 +17,7 @@ export default function Shop() {
 
   function handleClick(event) {
     event.preventDefault()
+    dispatch(navigate('/'))
     console.log('hit')
   }
 
@@ -39,4 +42,3 @@ export default function Shop() {
     </>
   )
 }
-// process.env.PUBLIC_URL + `/grill${jewel.id}.png`
