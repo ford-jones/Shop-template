@@ -13,8 +13,11 @@ export default function ShopItem() {
   function findJewelery() {
     const name = useParams()
 
-    let jewelName = String(name)
-    jewelery.find((x) => x.name == jewelName)
+    let jewelName = name
+    jewelery.find((x) => {
+      console.log('jewelName data: ', jewelName.name, x, x.name)
+      return x.name == jewelName.name
+    })
   }
 
   useEffect(async () => {
@@ -27,9 +30,10 @@ export default function ShopItem() {
   return (
     <>
       <div className="ShopItem">
+        <h1 className="header">Shop</h1>
         <Nav />
         <p>test</p>
-        {/* <p>{foundJewelery.name}</p> */}
+        <p>{foundJewelery}</p>
       </div>
     </>
   )
