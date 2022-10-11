@@ -53,3 +53,12 @@ body {
   /* width: 200px;
   height: 200px; */
 }
+
+.popUp {
+  border: 2px solid grey;
+  border-radius: 5px;
+  box-shadow: 20px, 20px, 20px, 20px grey;
+  width: 400px;
+  height: 250px;
+  z-index: 100;
+}

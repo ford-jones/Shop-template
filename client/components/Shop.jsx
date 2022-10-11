@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+// import { useNavigate } from 'react-router-dom'
+import { Link, Outlet } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 
 import Nav from './Nav'
@@ -9,17 +10,24 @@ import { fetchJewelery, selectJewelery } from '../slices/jewelery'
 export default function Shop() {
   const jewelery = useSelector(selectJewelery)
   const dispatch = useDispatch()
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
 
   useEffect(async () => {
     await dispatch(fetchJewelery())
   }, [])
 
-  function handleClick(event) {
-    event.preventDefault()
-    dispatch(navigate('/'))
-    console.log('hit')
-  }
+  // function handleSubmit(event) {
+  //   event.preventDefault()
+  //   console.log('hit')
+  //   dispatch(navigate(`/shop/${id}`))
+  //   // return (
+  //   //   <>
+  //   //     <div className="popUp">
+  //   //       <p>yes</p>
+  //   //     </div>
+  //   //   </>
+  //   // )
+  // }
 
   return (
     <>
@@ -27,7 +35,8 @@ export default function Shop() {
       <Nav />
       {jewelery.map((jewel) => (
         <>
-          <div className="shopItem" onClick={handleClick}>
+          <Link to={`/shop/${jewel.name}`}>
+            {/* <div className="shopItem" onClick={handleSubmit}> */}
             <ul key={jewel.id}>
               <img src={`/images/grill${jewel.id}.png`} alt="jewelPhoto" />
               <li>{jewel.name}</li>
@@ -36,7 +45,9 @@ export default function Shop() {
               <li>{jewel.weight}</li>
               <li>{jewel.price}</li>
             </ul>
-          </div>
+            {/* </div> */}
+          </Link>
+          <Outlet />
         </>
       ))}
     </>
