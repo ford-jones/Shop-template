@@ -16,19 +16,6 @@ export default function Shop() {
     await dispatch(fetchJewelery())
   }, [])
 
-  // function handleSubmit(event) {
-  //   event.preventDefault()
-  //   console.log('hit')
-  //   dispatch(navigate(`/shop/${id}`))
-  //   // return (
-  //   //   <>
-  //   //     <div className="popUp">
-  //   //       <p>yes</p>
-  //   //     </div>
-  //   //   </>
-  //   // )
-  // }
-
   return (
     <>
       <h1 className="header">Shop</h1>
@@ -36,16 +23,11 @@ export default function Shop() {
       {jewelery.map((jewel) => (
         <>
           <Link to={`/shop/${jewel.name}`}>
-            {/* <div className="shopItem" onClick={handleSubmit}> */}
             <ul key={jewel.id}>
               <img src={`/images/grill${jewel.id}.png`} alt="jewelPhoto" />
               <li>{jewel.name}</li>
-              <li>{jewel.materials}</li>
-              <li>{jewel.description}</li>
-              <li>{jewel.weight}</li>
               <li>{jewel.price}</li>
             </ul>
-            {/* </div> */}
           </Link>
           <Outlet />
         </>
