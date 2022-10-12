@@ -7,7 +7,7 @@ import Nav from './Nav'
 
 // import { getInquiries } from '../apis/inquiries'
 
-export default function Shop() {
+export default function AdminInquiries() {
   // const [inquiries, setInquiries] = useState('')
 
   // useEffect(async () => {
