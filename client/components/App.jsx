@@ -6,6 +6,9 @@ import Home from './Home'
 import Shop from './Shop'
 import ShopItem from './ShopItem'
 import About from './About'
+import Faqs from './Faqs'
+import Contact from './Contact'
+
 
 function App() {
   return (
@@ -16,6 +19,8 @@ function App() {
           <Route path="/shop" element={<Shop />} />
           <Route path="/shop/:name" element={<ShopItem />} />
           <Route path="/about" element={<About />} />
+          <Route path="/faq" element={<Faqs />} />
+          <Route path="contact" element={<Contact />} />
         </Routes>
       </div>
     </>
