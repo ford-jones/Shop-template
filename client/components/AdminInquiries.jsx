@@ -1,18 +1,18 @@
-import React from 'react'
-// import React, { useEffect, useState } from 'react'
-// import { useNavigate } from 'react-router-dom'
-// import { Link, Outlet } from 'react-router-dom'
+// import React from 'react'
+import React, { useEffect, useState } from 'react'
+// import { useNavigate, Link, Outlet } from 'react-router-dom'
 
 import Nav from './Nav'
 
-// import { getInquiries } from '../apis/inquiries'
+import { getInquiries } from '../apis/inquiries'
 
 export default function AdminInquiries() {
-  // const [inquiries, setInquiries] = useState('')
+  const [inquiries, setInquiries] = useState('')
 
-  // useEffect(async () => {
-  //   await setInquiries(getInquiries())
-  // }, [])
+  useEffect(async () => {
+    await setInquiries(getInquiries())
+  }, [])
+  console.log('inquiries: ', inquiries)
 
   return (
     <>
