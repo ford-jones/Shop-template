@@ -31,6 +31,10 @@ function Nav() {
               Cart
             </Link>
             <Outlet />
+            <Link to="/admin/inquiries" className="navlink">
+              test
+            </Link>
+            <Outlet />
           </span>
         </section>
       </div>

@@ -8,6 +8,7 @@ import ShopItem from './ShopItem'
 import About from './About'
 import Faqs from './Faqs'
 import Contact from './Contact'
+import Inquiries from './AdminInquiries'
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/faq" element={<Faqs />} />
           <Route path="/contact" element={<Contact />} />
+          <Route oath="/admin/inquiries" element={<Inquiries />} />
         </Routes>
       </div>
     </>
