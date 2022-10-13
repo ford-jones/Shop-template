@@ -9,8 +9,14 @@ import { getInquiries } from '../apis/inquiries'
 export default function AdminInquiries() {
   const [inquiries, setInquiries] = useState('')
 
-  useEffect(async () => {
-    await setInquiries(getInquiries())
+  useEffect(() => {
+    // try {
+    setInquiries(async () => {
+      return await getInquiries()
+    })
+    // } catch (err) {
+    //   console.log(err)
+    // }
   }, [])
   console.log('inquiries: ', inquiries)
 
