@@ -67,3 +67,14 @@ body {
   flex-direction: column;
   margin: 10px;
 }
+
+.shopItemText {
+  flex-direction: row;
+  position: relative;
+  left: 50%;
+  margin-right: 1000px;
+}
+
+.shopItemImage {
+  position: absolute;
+}

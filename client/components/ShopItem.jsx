@@ -26,13 +26,19 @@ export default function ShopItem() {
       <div className="ShopItem">
         <h1 className="header">Shop</h1>
         <Nav />
-        <img src={`/images/grill${foundJewelery.id}.png`} alt="jewelPhoto" />
-        <p>{foundJewelery.name}</p>
-        <p>{foundJewelery.materials}</p>
-        <p>{foundJewelery.description}</p>
-        <p>{foundJewelery.weight}</p>
-        <p>{foundJewelery.price}</p>
-        <button className="cartButton">Add To Cart</button>
+        <img
+          className="shopItemImage"
+          src={`/images/grill${foundJewelery.id}.png`}
+          alt="jewelPhoto"
+        />
+        <div className="shopItemText">
+          <p>{foundJewelery.name}</p>
+          <p>{foundJewelery.materials}</p>
+          <p>{foundJewelery.description}</p>
+          <p>{foundJewelery.weight}</p>
+          <p>{foundJewelery.price}</p>
+          <button className="cartButton">Add To Cart</button>
+        </div>
       </div>
     </>
   )
