@@ -7,7 +7,7 @@ export default function Faqs() {
   return (
     <>
       <div className="Faqs">
-        <h1 className="header">{"FAQ's"}</h1>
+        <h1 className="header">Frequently asked questions</h1>
         <Nav />
         <h2>How long can I expect to wait?</h2>
         <p>
