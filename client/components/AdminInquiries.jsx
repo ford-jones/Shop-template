@@ -38,6 +38,7 @@ export default function AdminInquiries() {
               <li>{user.email}</li>
               <li>{user.inquiry}</li>
             </ul>
+            <button>mark as read</button>
           </>
         ))
       )}

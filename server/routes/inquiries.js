@@ -16,4 +16,12 @@ router.get('/', (req, res) => {
     })
 })
 
+// create a post route that sends the body of the inputs on the /contact route to the db
+// router.post('/', (req, res) => {
+//  db.addInquiry()
+//  .then((question) => {
+//  req, res
+//  })
+// })
+
 module.exports = router
