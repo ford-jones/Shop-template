@@ -20,18 +20,20 @@ export default function Shop() {
     <>
       <h1 className="header">Shop</h1>
       <Nav />
-      {jewelery.map((jewel) => (
-        <>
-          <Link to={`/shop/${jewel.name}`}>
-            <ul key={jewel.id}>
-              <img src={`/images/grill${jewel.id}.png`} alt="jewelPhoto" />
-              <li>{jewel.name}</li>
-              <li>{jewel.price}</li>
-            </ul>
-          </Link>
-          <Outlet />
-        </>
-      ))}
+      <div className="product">
+        {jewelery.map((jewel) => (
+          <>
+            <Link to={`/shop/${jewel.name}`}>
+              <ul key={jewel.id}>
+                <img src={`/images/grill${jewel.id}.png`} alt="jewelPhoto" />
+                <li>{jewel.name}</li>
+                <li>{jewel.price}</li>
+              </ul>
+            </Link>
+            <Outlet />
+          </>
+        ))}
+      </div>
     </>
   )
 }
