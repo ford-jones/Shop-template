@@ -29,7 +29,6 @@ export default function AdminInquiries() {
     <>
       <h1 className="header">Admin: Inquiries</h1>
       <Nav />
-      <p>test</p>
       {loading ? (
         <Loader />
       ) : (
