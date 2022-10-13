@@ -1,6 +1,4 @@
-// import React from 'react'
 import React, { useEffect, useState } from 'react'
-// import { useNavigate, Link, Outlet } from 'react-router-dom'
 
 import Nav from './Nav'
 import Loader from './Loader'
@@ -15,15 +13,15 @@ export default function AdminInquiries() {
     try {
       setTimeout(() => {
         setInquiries(async () => {
-          setLoading(false)
           return await getInquiries()
         })
-      }, 5000)
+        setLoading(false)
+      }, 3000)
     } catch (err) {
       console.log(err)
     }
   }, [])
-  console.log('inquiries: ', inquiries)
+  console.log('inquiries: ', inquiries, typeof inquiries)
 
   return (
     <>
