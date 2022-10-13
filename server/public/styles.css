@@ -78,3 +78,25 @@ body {
 .shopItemImage {
   position: absolute;
 }
+
+.contact {
+  flex-direction: column;
+}
+
+.socialMedia {
+  flex-direction: column;
+  position: relative;
+  display: -webkit-inline-box;
+}
+
+.igContact {
+  flex-direction: row;
+}
+
+.emailContact {
+  flex-direction: row;
+}
+
+.dbContact {
+  flex-direction: column;
+}
