@@ -11,16 +11,15 @@ export default function AdminInquiries() {
 
   useEffect(() => {
     try {
-      setTimeout(() => {
-        setInquiries(async () => {
-          return await getInquiries()
-        })
+      setTimeout(async () => {
+        const inq = await getInquiries()
+        setInquiries(inq)
         setLoading(false)
       }, 3000)
     } catch (err) {
       console.log(err)
     }
-  }, [])
+  }, [inquiries])
   console.log('inquiries: ', inquiries, typeof inquiries)
 
   return (
