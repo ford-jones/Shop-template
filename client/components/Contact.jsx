@@ -4,7 +4,6 @@ import Nav from './Nav'
 import { postInquiry } from '../apis/inquiries'
 
 export default function Contact() {
-
   function handleSubmit(e) {
     console.log('handle submit: hit! ', e)
   }
@@ -37,11 +36,11 @@ export default function Contact() {
           <p>Inquiry:</p>
           <input></input>
           <button onClick={handleSubmit}>submit</button>
-          <footer>
-            Responses can be expected to be recieved within the next 5 business
-            days.
-          </footer>
         </section>
+        <footer>
+          Responses can be expected to be recieved within the next 5 business
+          days.
+        </footer>
       </div>
     </>
   )

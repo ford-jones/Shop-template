@@ -13,9 +13,11 @@ export function getInquiries() {
 
 export function postInquiry(data) {
   console.log('inquiries api: ', data)
-  
+
   return request
-  .post(rootUrl + '/admin/inquiries')
-  .send({id, date, name: data.name, email: data.email, inquiry: data.inquiry})
-  .then((res) => {res.body})
+    .post(rootUrl + '/admin/inquiries')
+    .send({ name: data.name, email: data.email, inquiry: data.inquiry })
+    .then((res) => {
+      res.body
+    })
 }
