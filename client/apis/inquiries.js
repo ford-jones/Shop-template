@@ -10,3 +10,12 @@ export function getInquiries() {
 
 // not sure but might need to req.body here to get the what is inside the inputs on the contact page
 // possibly inside ../api/jewelery.js
+
+export function postInquiry(data) {
+  console.log('inquiries api: ', data)
+  
+  return request
+  .post(rootUrl + '/admin/inquiries')
+  .send({id, date, name: data.name, email: data.email, inquiry: data.inquiry})
+  .then((res) => {res.body})
+}

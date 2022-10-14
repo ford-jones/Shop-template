@@ -1,7 +1,14 @@
 import React from 'react'
 import Nav from './Nav'
 
+import { postInquiry } from '../apis/inquiries'
+
 export default function Contact() {
+
+  function handleSubmit(e) {
+    console.log('handle submit: hit! ', e)
+  }
+
   return (
     <>
       <div className="contact">
@@ -29,7 +36,7 @@ export default function Contact() {
           <input></input>
           <p>Inquiry:</p>
           <input></input>
-          <button>submit</button>
+          <button onClick={handleSubmit}>submit</button>
           <footer>
             Responses can be expected to be recieved within the next 5 business
             days.

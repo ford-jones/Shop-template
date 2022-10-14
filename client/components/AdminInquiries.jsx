@@ -20,7 +20,7 @@ export default function AdminInquiries() {
       console.log(err)
     }
   }, [inquiries])
-  console.log('inquiries: ', inquiries, typeof inquiries)
+  // console.log('inquiries: ', inquiries, typeof inquiries)
 
   return (
     <>
