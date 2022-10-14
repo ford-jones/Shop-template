@@ -18,8 +18,10 @@ router.get('/', (req, res) => {
 
 // create a post route that sends the body of the inputs on the /contact route to the db
 router.post('/', (req, res) => {
-  const inquiry = req.body
+  const inquiry = req.body.inquiries
+  console.log(inquiry)
   db.addInquiry(inquiry)
+
     .then(() => {
       res.sendStatus(201)
       return null
