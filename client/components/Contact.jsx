@@ -9,13 +9,13 @@ export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', inquiry: '' })
   const navigate = useNavigate()
 
-  function handleChange(event) {
-    setForm({ ...form, [event.target.name]: event.target.value })
+  function handleChange(e) {
+    setForm({ ...form, [e.target.name]: e.target.value })
   }
   console.log(form)
 
-  function handleSubmit(form) {
-    console.log('handle submit: hit 1: ', form)
+  function handleSubmit() {
+    console.log('form: ', form)
     postInquiry(form)
       .then(navigate('/admin/inquiries'))
       .catch((err) => {
