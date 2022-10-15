@@ -1,11 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Nav from './Nav'
 
 import { postInquiry } from '../apis/inquiries'
 
 export default function Contact() {
+  const [form, setForm] = useState({ name: '', email: '', inquiry: '' })
+
+  function handleChange(event) {
+    setForm({ ...form, [event.target.name]: event.target.value })
+  }
+  console.log(form)
+
   function handleSubmit(e) {
     console.log('handle submit: hit! ', e)
+    postInquiry(e)
+      .then(console.log('test'))
+      .catch((err) => {
+        console.error(err)
+      })
   }
 
   return (
@@ -29,13 +41,38 @@ export default function Contact() {
         </div>
         <section className="dbContact">
           <h3>Or, contact directly!</h3>
-          <p>name:</p>
-          <input></input>
-          <p>email:</p>
-          <input></input>
-          <p>Inquiry:</p>
-          <input></input>
-          <button onClick={handleSubmit}>submit</button>
+          <form id="form" noValidate>
+            <label htmlFor="name">Name: </label>
+            <input
+              type="text"
+              name="name"
+              placeholder=" "
+              value={form.name}
+              onChange={handleChange}
+              className="nameInput"
+            ></input>
+            <label htmlFor="email">Email Address: </label>
+            <input
+              type="text"
+              name="email"
+              placeholder=" "
+              value={form.email}
+              onChange={handleChange}
+              className="emailInput"
+            ></input>
+            <label htmlFor="inquiry">Leave a comment or inquiry below: </label>
+            <input
+              type="text"
+              name="inquiry"
+              placeholder=" "
+              value={form.inquiry}
+              onChange={handleChange}
+              className="inquiryInput"
+            ></input>
+            <button type="submit" onClick={handleSubmit} className="button">
+              Submit Inquiry
+            </button>
+          </form>
         </section>
         <footer>
           Responses can be expected to be recieved within the next 5 business
