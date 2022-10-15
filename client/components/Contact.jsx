@@ -1,20 +1,23 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+
 import Nav from './Nav'
 
 import { postInquiry } from '../apis/inquiries'
 
 export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', inquiry: '' })
+  const navigate = useNavigate()
 
   function handleChange(event) {
     setForm({ ...form, [event.target.name]: event.target.value })
   }
   console.log(form)
 
-  function handleSubmit(e) {
-    console.log('handle submit: hit! ', e)
-    postInquiry(e)
-      .then(console.log('test'))
+  function handleSubmit(form) {
+    console.log('handle submit: hit 1: ', form)
+    postInquiry(form)
+      .then(navigate('/admin/inquiries'))
       .catch((err) => {
         console.error(err)
       })
