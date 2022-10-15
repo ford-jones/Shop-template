@@ -8,7 +8,7 @@ function getInquiry(db = connection) {
 // will have a nested fn for fetching Date.now()
 function addInquiry(question, db = connection) {
   const dateNow = new Date(Date.now())
-
+  console.log('from db.js: ', question)
   return db('inquiries')
     .insert({
       date_recieved: dateNow,

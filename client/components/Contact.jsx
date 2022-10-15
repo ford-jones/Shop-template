@@ -14,7 +14,8 @@ export default function Contact() {
   }
   console.log(form)
 
-  function handleSubmit() {
+  function handleSubmit(e) {
+    e.preventDefault()
     console.log('form: ', form)
     postInquiry(form)
       .then(navigate('/admin/inquiries'))
