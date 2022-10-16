@@ -4,7 +4,7 @@ const db = require('../db/inquiries')
 
 const router = express.Router()
 
-router.get('/', (req, res) => {
+router.get('*', (req, res) => {
   db.getInquiry()
     .then((results) => {
       res.json({ inquiries: results.map((inquiry) => inquiry) })

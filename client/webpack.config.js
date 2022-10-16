@@ -5,6 +5,7 @@ module.exports = {
   output: {
     path: path.join(__dirname, '..', 'server', 'public'),
     filename: 'bundle.js',
+    publicPath: '/',
   },
   mode: 'development',
   module: {
@@ -15,6 +16,9 @@ module.exports = {
         exclude: /node_modules/,
       },
     ],
+  },
+  devServer: {
+    historyApiFallback: true,
   },
   resolve: {
     extensions: ['.js', '.jsx'],
