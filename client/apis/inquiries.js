@@ -18,7 +18,7 @@ export function postInquiry(data) {
     .post(rootUrl + '/admin/inquiries')
     .send(data)
     .then((res) => {
-      res.body
+      return res.body.inquiries
     })
   // .send({ name: data.name, email: data.email, inquiry: data.inquiry })
 }

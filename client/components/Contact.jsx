@@ -12,7 +12,7 @@ export default function Contact() {
   function handleChange(e) {
     setForm({ ...form, [e.target.name]: e.target.value })
   }
-  console.log(form)
+  // console.log(form)
 
   function handleSubmit(e) {
     e.preventDefault()
