@@ -12,12 +12,13 @@ export function getInquiries() {
 // possibly inside ../api/jewelery.js
 
 export function postInquiry(data) {
-  console.log('inquiries api: ', data)
+  console.log('api data: ', data)
 
   return request
     .post(rootUrl + '/admin/inquiries')
-    .send({ name: data.name, email: data.email, inquiry: data.inquiry })
+    .send(data)
     .then((res) => {
       res.body
     })
+  // .send({ name: data.name, email: data.email, inquiry: data.inquiry })
 }

@@ -16,7 +16,7 @@ export default function Contact() {
 
   function handleSubmit(e) {
     e.preventDefault()
-    console.log('form: ', form)
+    console.log('handle submit data: ', form)
     postInquiry(form)
       .then(navigate('/admin/inquiries'))
       .catch((err) => {

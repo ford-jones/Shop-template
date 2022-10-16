@@ -20,7 +20,7 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
   let inquiry = req.body.inquiries
 
-  console.log('from route: ', inquiry)
+  console.log('route data: ', inquiry)
   db.addInquiry(inquiry)
 
     .then(() => {
