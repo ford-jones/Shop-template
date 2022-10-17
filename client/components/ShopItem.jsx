@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 
 import { fetchJewelery, selectJewelery } from '../slices/jewelery'
@@ -16,6 +16,16 @@ export default function ShopItem() {
     // console.log('jewelName data: ', jewelName, jewelName.name, x, x.name)
     return x.name == jewelName.name
   })
+
+  async function handleSubmit(e) {
+    console.log('hit!')
+    const navigate = useNavigate()
+    e.preventDefault()
+      .then(navigate('/cart'))
+      .catch((err) => {
+        console.error(err)
+      })
+  }
 
   useEffect(async () => {
     await dispatch(fetchJewelery())
@@ -37,7 +47,12 @@ export default function ShopItem() {
           <p>{foundJewelery.description}</p>
           <p>{foundJewelery.weight}</p>
           <p>{foundJewelery.price}</p>
-          <button className="cartButton">Add To Cart</button>
+          <form className="addToCart">
+            {/* <label htmlFor="cart">Add to cart</label> */}
+            <button className="cartButton" onClick={handleSubmit}>
+              add to cart
+            </button>
+          </form>
         </div>
       </div>
     </>
