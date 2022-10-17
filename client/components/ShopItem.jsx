@@ -17,12 +17,20 @@ export default function ShopItem() {
     return x.name == jewelName.name
   })
 
-  // async function handleSubmit(e) {
+  // function handleSubmit(e) {
   //   console.log('hit!')
-  //   // const navigate = useNavigate()
+  //   const navigate = useNavigate()
   //   e.preventDefault()
-  //   return redirect('/cart')
+  //   .then(navigate('/cart'))
+  //   .catch((err) => {
+  //   console.error(err)
+  //   })
+  //   // return redirect('/cart')
   // }
+
+  function handleSubmit(e) {
+    e.preventDefault()
+  }
 
   useEffect(async () => {
     await dispatch(fetchJewelery())
@@ -45,9 +53,12 @@ export default function ShopItem() {
           <p>{foundJewelery.weight}</p>
           <p>{foundJewelery.price}</p>
           <form className="addToCart">
-            {/* <label htmlFor="cart">Add to cart</label> */}
             <Link to="/cart">
-              <button type="submit" className="cartButton">
+              <button
+                type="submit"
+                className="cartButton"
+                onClick={handleSubmit}
+              >
                 add to cart
               </button>
             </Link>
