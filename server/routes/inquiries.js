@@ -16,4 +16,21 @@ router.get('*', (req, res) => {
     })
 })
 
+// create a post route that sends the body of the inputs on the /contact route to the db
+router.post('/', (req, res) => {
+  let inquiry = req.body
+
+  console.log('route data: ', inquiry)
+  db.addInquiry(inquiry)
+
+    .then(() => {
+      res.sendStatus(201)
+      return null
+    })
+    .catch((err) => {
+      console.log(err)
+      res.status(500).json({ message: 'something went wrong' })
+    })
+})
+
 module.exports = router

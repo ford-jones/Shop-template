@@ -22,7 +22,7 @@ export default function AdminInquiries() {
       console.log(err)
     }
   }, [inquiries])
-  console.log('inquiries: ', inquiries, typeof inquiries)
+  // console.log('inquiries: ', inquiries, typeof inquiries)
 
   return (
     <>
@@ -33,13 +33,13 @@ export default function AdminInquiries() {
       ) : (
         inquiries.map((user) => (
           <>
-            <ul key={user.id}>
-              <li>{user.id}</li>
-              <li>{user.date_recieved}</li>
-              <li>{user.name}</li>
-              <li>{user.email}</li>
-              <li>{user.inquiry}</li>
-            </ul>
+            <p>{user.id}</p>
+            <p>{user.date_recieved}</p>
+            <p>{user.name}</p>
+            <p>{user.email}</p>
+            <p>{user.inquiry}</p>
+
+            <button>mark as read</button>
           </>
         ))
       )}
