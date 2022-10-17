@@ -33,13 +33,14 @@ export default function AdminInquiries() {
       ) : (
         inquiries.map((user) => (
           <>
-            <p>{user.id}</p>
-            <p>{user.date_recieved}</p>
-            <p>{user.name}</p>
-            <p>{user.email}</p>
-            <p>{user.inquiry}</p>
+            <p>inquiry id: {user.id}</p>
+            <p>date submitted: {user.date_recieved}</p>
+            <p>user name: {user.name}</p>
+            <p>user email: {user.email}</p>
+            <p>user inquiry: {user.inquiry}</p>
 
             <button>mark as read</button>
+            <div className="inquiryBreak"></div>
           </>
         ))
       )}
