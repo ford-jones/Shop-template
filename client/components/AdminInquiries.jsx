@@ -13,7 +13,9 @@ export default function AdminInquiries() {
     try {
       setTimeout(async () => {
         const inq = await getInquiries()
-        setInquiries(inq)
+        localStorage.setItem('inquiries', JSON.stringify(inq))
+        const inquiry = localStorage.getItem('inquiries')
+        setInquiries(JSON.parse(inquiry))
         setLoading(false)
       }, 3000)
     } catch (err) {

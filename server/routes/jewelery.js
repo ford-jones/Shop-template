@@ -4,7 +4,7 @@ const db = require('../db/jewelery')
 
 const router = express.Router()
 
-router.get('/', (req, res) => {
+router.get('*', (req, res) => {
   db.getJewelery()
     .then((results) => {
       res.json({ jewelery: results.map((jewel) => jewel) })
