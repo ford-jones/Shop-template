@@ -18,7 +18,7 @@ export default function Contact() {
     e.preventDefault()
     console.log('handle submit data: ', form)
     postInquiry(form)
-      .then(navigate('/admin/inquiries'))
+      .then(navigate('/contact'))
       .catch((err) => {
         console.error(err)
       })

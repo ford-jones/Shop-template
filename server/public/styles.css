@@ -100,3 +100,12 @@ body {
 .dbContact {
   flex-direction: column;
 }
+
+.inquiryBreak {
+  height: 1px;
+  border: 2px solid lightgray;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
