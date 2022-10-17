@@ -28,9 +28,9 @@ export default function ShopItem() {
   //   // return redirect('/cart')
   // }
 
-  function handleSubmit(e) {
-    e.preventDefault()
-  }
+  // function handleSubmit(e) {
+  //   e.preventDefault()
+  // }
 
   useEffect(async () => {
     await dispatch(fetchJewelery())
@@ -57,7 +57,7 @@ export default function ShopItem() {
               <button
                 type="submit"
                 className="cartButton"
-                onClick={handleSubmit}
+                // onClick={handleSubmit}
               >
                 add to cart
               </button>
