@@ -12,9 +12,9 @@ function addInquiry(question, db = connection) {
   return db('inquiries')
     .insert({
       date_recieved: dateNow,
-      name: question[0].name,
-      email: question[0].email,
-      inquiry: question[0].inquiry,
+      name: question.name,
+      email: question.email,
+      inquiry: question.inquiry,
     })
     .select()
 }
