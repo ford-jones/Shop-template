@@ -109,3 +109,13 @@ body {
   margin-top: 30px;
   margin-bottom: 30px;
 }
+
+.cartItemImage {
+  height: 150px;
+  width: 150px; 
+  /* float: right; */
+  left: 40%;
+  position: relative;
+  flex-direction: row;
+  margin-bottom: 0px;
+}
