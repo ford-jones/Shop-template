@@ -101,7 +101,7 @@ body {
   flex-direction: column;
 }
 
-.inquiryBreak {
+.pageBreak {
   height: 1px;
   border: 2px solid lightgray;
   margin-left: auto;

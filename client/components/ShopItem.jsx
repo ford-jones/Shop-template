@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { useParams, Link, Outlet } from 'react-router-dom'
+import { useParams, Link, Outlet, redirect } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 
 import { fetchJewelery, selectJewelery } from '../slices/jewelery'
@@ -17,20 +17,20 @@ export default function ShopItem() {
     return x.name == jewelName.name
   })
 
-  // function handleSubmit(e) {
-  //   console.log('hit!')
-  //   const navigate = useNavigate()
-  //   e.preventDefault()
-  //   .then(navigate('/cart'))
-  //   .catch((err) => {
-  //   console.error(err)
-  //   })
-  //   // return redirect('/cart')
-  // }
-
-  // function handleSubmit(e) {
-  //   e.preventDefault()
-  // }
+  function handleSubmit(e) {
+    console.log('hit!')
+    // const navigate = useNavigate()
+    try {
+      const cartItem = JSON.stringify(foundJewelery)
+      e.preventDefault()
+  
+      localStorage.setItem('cartItem', cartItem)
+      redirect('/cart')
+      
+    } catch (err) {
+      console.error(err)
+    }
+  }
 
   useEffect(async () => {
     await dispatch(fetchJewelery())
@@ -53,16 +53,16 @@ export default function ShopItem() {
           <p>{foundJewelery.weight}</p>
           <p>{foundJewelery.price}</p>
           <form className="addToCart">
-            <Link to="/cart">
+            {/* <Link to="/cart"> */}
               <button
                 type="submit"
                 className="cartButton"
-                // onClick={handleSubmit}
+                onClick={handleSubmit}
               >
                 add to cart
               </button>
-            </Link>
-            <Outlet />
+            {/* </Link>
+            <Outlet /> */}
           </form>
         </div>
       </div>
