@@ -40,7 +40,7 @@ export default function AdminInquiries() {
             <p>user inquiry: {user.inquiry}</p>
 
             <button>mark as read</button>
-            <div className="inquiryBreak"></div>
+            <div className="pageBreak"></div>
           </>
         ))
       )}

@@ -3,11 +3,6 @@ import React from 'react'
 import Nav from './Nav'
 
 export default function About() {
-  // const [about, setAbout] = useState('')
-
-  // useEffect(() => {
-  //   setAbout()
-  // }, [])
 
   return (
     <>

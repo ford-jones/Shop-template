@@ -24,15 +24,13 @@ export default function Shop() {
         <>
           <div className="product">
             <Link to={`/shop/${jewel.name}`}>
-              <ul key={jewel.id}>
-                <img
-                  className="productImage"
-                  src={`/images/grill${jewel.id}.png`}
-                  alt="jewelPhoto"
-                />
-                <li>{jewel.name}</li>
-                <li>{jewel.price}</li>
-              </ul>
+              <img
+                className="productImage"
+                src={`/images/grill${jewel.id}.png`}
+                alt="jewelPhoto"
+              />
+              <p>{jewel.name}</p>
+              <p>{jewel.price}</p>
             </Link>
             <Outlet />
           </div>
