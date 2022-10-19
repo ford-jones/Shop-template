@@ -22,31 +22,38 @@ export default function ShopItem() {
     // console.log('jewelName data: ', jewelName, jewelName.name, x, x.name)
     return x.name == jewelName.name
   })
+  console.log(foundJewelery)
 
-  function addToCart() {
-    const cartData = [...cart, foundJewelery]
-    const clickedItem = JSON.stringify(cartData)
-    console.log('cartData: ', cartData)
-    console.log('clickedItem: ', clickedItem)
+  // function addToCart() {
+  //   const cartData = [...cart, foundJewelery]
+  //   const clickedItem = JSON.stringify(cartData)
+  //   console.log('cartData: ', cartData)
+  //   console.log('clickedItem: ', clickedItem)
 
-    return localStorage.setItem('cartItem', clickedItem)
-  }
+  // }
 
   function handleSubmit(e) {
     console.log('hit!')
     // const navigate = useNavigate()
     e.preventDefault()
-    try {
-      setCart(addToCart())
+    // try {
+    const cartData = [...cart, foundJewelery]
+    const clickedItem = JSON.stringify(cartData)
+    // setCart(clickedItem)
+    localStorage.setItem('cartItem', clickedItem)
 
-      redirect('/cart')
-    } catch (err) {
-      console.error(err)
-    }
+    redirect('/cart')
   }
+  //   } catch (err) {
+  //     console.error(err)
+  //   }
+  // }
   console.log('cart: ', cart)
   useEffect(async () => {
     await dispatch(fetchJewelery())
+    const fetchCart = localStorage.getItem('cartItem')
+    const cartItems = JSON.parse(fetchCart)
+    setCart(cartItems)
   }, [])
 
   return (
