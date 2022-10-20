@@ -17,6 +17,9 @@ export default function Cart() {
 
   function handleCart(e) {
     e.preventDefault()
+
+    // setLoading(true)
+
     let deletedItem = cart.filter((x) => {
       return x.id != e.target.id
     })
