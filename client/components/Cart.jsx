@@ -16,11 +16,14 @@ export default function Cart() {
 
   function handleCart(e) {
     e.preventDefault()
-    let deleteItem = cart.filter((x) => {
+    let deletedItem = cart.filter((x) => {
       return x.id != e.target.id
     })
-    console.log('delete Item: ', deleteItem)
-    console.log('cart: ', cart)
+    console.log('new cart array: ', deletedItem)
+
+    localStorage.removeItem('cartItem')
+    let newCartString = JSON.stringify(deletedItem)
+    return localStorage.setItem('cartItem', newCartString)
   }
 
   useEffect(() => {
