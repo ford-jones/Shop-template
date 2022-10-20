@@ -9,20 +9,27 @@ export default function Cart() {
 
   const fetchCart = localStorage.getItem('cartItem')
   const cartItems = JSON.parse(fetchCart)
-  // const userCart = [...cart, cartItems]
 
-  function handleClick(e) {
+  function handleCheckout(e) {
     e.preventDefault()
+  }
+
+  function handleCart(e) {
+    e.preventDefault()
+    let deleteItem = cart.find((x) => {
+      return x.id == e.target.id
+    })
+    console.log(deleteItem)
+    console.log(cart)
   }
 
   useEffect(() => {
     setTimeout(() => {
-      // setCart(userCart)
       setCart(cartItems)
       setLoading(false)
     }, 3000)
   }, [cart])
-  console.log('cart: ', cart, typeof cart)
+  // console.log('cart: ', cart, typeof cart)
 
   return (
     <>
@@ -43,13 +50,27 @@ export default function Cart() {
                 <p>{cartItem.name}</p>
                 <p>{cartItem.material}</p>
                 <p>{cartItem.price}</p>
+                <form className="clearCart">
+                  <button
+                    id={cartItem.id}
+                    type="submit"
+                    className="removeCartItem"
+                    onClick={handleCart}
+                  >
+                    remove from cart
+                  </button>
+                </form>
                 <div className="pageBreak"></div>
               </>
             )
           })
         )}
         <form className="checkout">
-          <button type="submit" className="goToCheckout" onClick={handleClick}>
+          <button
+            type="submit"
+            className="goToCheckout"
+            onClick={handleCheckout}
+          >
             Checkout
           </button>
         </form>
