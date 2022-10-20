@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { Link, Outlet } from 'react-router-dom'
 
 import Nav from './Nav'
 import Loader from './Loader'
@@ -34,50 +35,75 @@ export default function Cart() {
   }, [cart])
   // console.log('cart: ', cart, typeof cart)
 
-  return (
-    <>
-      <div className="cart">
-        <h1 className="header">Cart</h1>
-        <Nav />
-        {loading ? (
-          <Loader />
-        ) : (
-          cart.map((cartItem) => {
-            return (
-              <>
-                <img
-                  className="cartItemImage"
-                  src={`/images/grill${cartItem.id}.png`}
-                  alt="jewelPhoto"
-                />
-                <p>{cartItem.name}</p>
-                <p>{cartItem.material}</p>
-                <p>{cartItem.price}</p>
-                <form className="clearCart">
-                  <button
-                    id={cartItem.id}
-                    type="submit"
-                    className="removeCartItem"
-                    onClick={handleCart}
-                  >
-                    remove from cart
-                  </button>
-                </form>
-                <div className="pageBreak"></div>
-              </>
-            )
-          })
-        )}
-        <form className="checkout">
-          <button
-            type="submit"
-            className="goToCheckout"
-            onClick={handleCheckout}
-          >
-            Checkout
-          </button>
-        </form>
-      </div>
-    </>
-  )
+  if (cart.length < 1) {
+    return (
+      <>
+        <div className="cart">
+          <h1 className="header">Cart</h1>
+          <Nav />
+          {loading ? (
+            <Loader />
+          ) : (
+            <>
+              <p>Uh oh!</p>
+              <p>Looks like your cart is empty!</p>
+              <br></br>
+              <p>
+                If you would like to browse products click
+                <Link to="/shop">here!</Link>
+                <Outlet />
+              </p>
+            </>
+          )}
+        </div>
+      </>
+    )
+  } else {
+    return (
+      <>
+        <div className="cart">
+          <h1 className="header">Cart</h1>
+          <Nav />
+          {loading ? (
+            <Loader />
+          ) : (
+            cart.map((cartItem) => {
+              return (
+                <>
+                  <img
+                    className="cartItemImage"
+                    src={`/images/grill${cartItem.id}.png`}
+                    alt="jewelPhoto"
+                  />
+                  <p>{cartItem.name}</p>
+                  <p>{cartItem.material}</p>
+                  <p>{cartItem.price}</p>
+                  <form className="clearCart">
+                    <button
+                      id={cartItem.id}
+                      type="submit"
+                      className="removeCartItem"
+                      onClick={handleCart}
+                    >
+                      remove from cart
+                    </button>
+                  </form>
+                  <div className="pageBreak"></div>
+                </>
+              )
+            })
+          )}
+          <form className="checkout">
+            <button
+              type="submit"
+              className="goToCheckout"
+              onClick={handleCheckout}
+            >
+              Checkout
+            </button>
+          </form>
+        </div>
+      </>
+    )
+  }
 }
