@@ -16,11 +16,11 @@ export default function Cart() {
 
   function handleCart(e) {
     e.preventDefault()
-    let deleteItem = cart.find((x) => {
-      return x.id == e.target.id
+    let deleteItem = cart.filter((x) => {
+      return x.id != e.target.id
     })
-    console.log(deleteItem)
-    console.log(cart)
+    console.log('delete Item: ', deleteItem)
+    console.log('cart: ', cart)
   }
 
   useEffect(() => {
