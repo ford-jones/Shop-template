@@ -7,11 +7,12 @@ import Loader from './Loader'
 export default function Cart() {
   const [loading, setLoading] = useState(true)
   const [cart, setCart] = useState([])
+  const [count, setCount] = useState(1)
 
   const fetchCart = localStorage.getItem('cartItem')
   const cartItems = JSON.parse(fetchCart)
 
-  const initialValue = 0
+  const initTotal = 0
 
   const total = cart
     .map((cartItem) => {
@@ -19,7 +20,7 @@ export default function Cart() {
     })
     .reduce(
       (previousValue, currentValue) => previousValue + currentValue,
-      initialValue
+      initTotal
     )
   console.log('total: ', total)
 
@@ -39,6 +40,16 @@ export default function Cart() {
     localStorage.removeItem('cartItem')
     let newCartString = JSON.stringify(deletedItem)
     return localStorage.setItem('cartItem', newCartString)
+  }
+
+  function handleDecrement(e) {
+    e.preventDefault()
+    setCount(count - 1)
+  }
+
+  function handleIncrement(e) {
+    e.preventDefault()
+    setCount(count + 1)
   }
 
   useEffect(() => {
@@ -93,14 +104,24 @@ export default function Cart() {
                   <p>{`$${cartItem.price}`}</p>
                   <section>
                     <form className="quantity">
-                      <p>Quantity: </p>
-                      <button type="submit" className="minusQuantity">
-                        -
-                      </button>
-                      <p>1</p>
-                      <button type="submit" className="addQuantity">
-                        +
-                      </button>
+                      <span>
+                        Quantity:
+                        <button
+                          type="submit"
+                          className="minusQuantity"
+                          onClick={handleDecrement}
+                        >
+                          -
+                        </button>
+                        <p>{count}</p>
+                        <button
+                          type="submit"
+                          className="addQuantity"
+                          onClick={handleIncrement}
+                        >
+                          +
+                        </button>
+                      </span>
                     </form>
                   </section>
                   <form className="clearCart">
