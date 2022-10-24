@@ -42,14 +42,15 @@ export default function Cart() {
     return localStorage.setItem('cartItem', newCartString)
   }
 
-  function handleDecrement(e) {
+  function handleQuantity(e) {
     e.preventDefault()
-    setCount(count - 1)
-  }
+    const name = e.target.name
 
-  function handleIncrement(e) {
-    e.preventDefault()
-    setCount(count + 1)
+    if (name === 'decrement') {
+      setCount(count - 1)
+    } else if (name === 'increment') {
+      setCount(count + 1)
+    }
   }
 
   useEffect(() => {
@@ -107,17 +108,19 @@ export default function Cart() {
                       <span>
                         Quantity:
                         <button
+                          name="decrement"
                           type="submit"
                           className="minusQuantity"
-                          onClick={handleDecrement}
+                          onClick={handleQuantity}
                         >
                           -
                         </button>
                         <p>{count}</p>
                         <button
+                          name="increment"
                           type="submit"
                           className="addQuantity"
-                          onClick={handleIncrement}
+                          onClick={handleQuantity}
                         >
                           +
                         </button>
