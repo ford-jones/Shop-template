@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Link, Outlet } from 'react-router-dom'
+import { useNavigate, Link, Outlet } from 'react-router-dom'
 
 import Nav from './Nav'
 import Loader from './Loader'
@@ -8,6 +8,7 @@ export default function Cart() {
   const [loading, setLoading] = useState(true)
   const [cart, setCart] = useState([])
   const [count, setCount] = useState(1)
+  const navigate = useNavigate()
 
   const fetchCart = localStorage.getItem('cartItem')
   const cartItems = JSON.parse(fetchCart)
@@ -26,6 +27,7 @@ export default function Cart() {
 
   function handleCheckout(e) {
     e.preventDefault()
+    navigate('/checkout')
   }
 
   function handleCart(e) {
