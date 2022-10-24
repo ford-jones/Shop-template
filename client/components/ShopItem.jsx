@@ -52,7 +52,7 @@ export default function ShopItem() {
           <p>{foundJewelery.materials}</p>
           <p>{foundJewelery.description}</p>
           <p>{foundJewelery.weight}</p>
-          <p>{foundJewelery.price}</p>
+          <p>{`$${foundJewelery.price}`}</p>
           <form className="addToCart">
             <button type="submit" className="cartButton" onClick={handleSubmit}>
               add to cart

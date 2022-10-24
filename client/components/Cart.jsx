@@ -10,6 +10,23 @@ export default function Cart() {
 
   const fetchCart = localStorage.getItem('cartItem')
   const cartItems = JSON.parse(fetchCart)
+  // console.log(cartItems)
+
+  function findTotal() {
+    const initialValue = 0
+
+    const prices = cart.map((cartItem) => {
+      return cartItem.price
+    })
+    console.log('prices: ', prices)
+
+    const total = prices.reduce(
+      (previousValue, currentValue) => previousValue + currentValue,
+      initialValue
+    )
+    console.log('total: ', total)
+  }
+  findTotal()
 
   function handleCheckout(e) {
     e.preventDefault()
@@ -23,7 +40,7 @@ export default function Cart() {
     let deletedItem = cart.filter((x) => {
       return x.id != e.target.id
     })
-    console.log('new cart array: ', deletedItem)
+    // console.log('new cart array: ', deletedItem)
 
     localStorage.removeItem('cartItem')
     let newCartString = JSON.stringify(deletedItem)
@@ -80,7 +97,7 @@ export default function Cart() {
                   />
                   <p>{cartItem.name}</p>
                   <p>{cartItem.material}</p>
-                  <p>{cartItem.price}</p>
+                  <p>{`$${cartItem.price}`}</p>
                   <form className="clearCart">
                     <button
                       id={cartItem.id}
@@ -96,6 +113,7 @@ export default function Cart() {
               )
             })
           )}
+          <div className="total">Total: $0</div>
           <form className="checkout">
             <button
               type="submit"
