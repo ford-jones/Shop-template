@@ -12,21 +12,23 @@ export default function Cart() {
   const cartItems = JSON.parse(fetchCart)
   // console.log(cartItems)
 
-  function findTotal() {
-    const initialValue = 0
+  const initialValue = 0
 
-    const prices = cart.map((cartItem) => {
+  const total = cart
+    .map((cartItem) => {
       return cartItem.price
     })
-    console.log('prices: ', prices)
-
-    const total = prices.reduce(
+    .reduce(
       (previousValue, currentValue) => previousValue + currentValue,
       initialValue
     )
-    console.log('total: ', total)
-  }
-  findTotal()
+  console.log('total: ', total)
+  // console.log('prices: ', prices)
+
+  // const total = prices.reduce(
+  //   (previousValue, currentValue) => previousValue + currentValue,
+  //   initialValue
+  // )
 
   function handleCheckout(e) {
     e.preventDefault()
@@ -113,7 +115,7 @@ export default function Cart() {
               )
             })
           )}
-          <div className="total">Total: $0</div>
+          <div className="total">{`Total: $${total}`}</div>
           <form className="checkout">
             <button
               type="submit"
