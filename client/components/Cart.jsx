@@ -10,7 +10,6 @@ export default function Cart() {
 
   const fetchCart = localStorage.getItem('cartItem')
   const cartItems = JSON.parse(fetchCart)
-  // console.log(cartItems)
 
   const initialValue = 0
 
@@ -23,12 +22,6 @@ export default function Cart() {
       initialValue
     )
   console.log('total: ', total)
-  // console.log('prices: ', prices)
-
-  // const total = prices.reduce(
-  //   (previousValue, currentValue) => previousValue + currentValue,
-  //   initialValue
-  // )
 
   function handleCheckout(e) {
     e.preventDefault()
@@ -42,7 +35,6 @@ export default function Cart() {
     let deletedItem = cart.filter((x) => {
       return x.id != e.target.id
     })
-    // console.log('new cart array: ', deletedItem)
 
     localStorage.removeItem('cartItem')
     let newCartString = JSON.stringify(deletedItem)
@@ -55,7 +47,6 @@ export default function Cart() {
       setLoading(false)
     }, 3000)
   }, [cart])
-  // console.log('cart: ', cart, typeof cart)
 
   if (cart.length < 1) {
     return (
@@ -115,16 +106,18 @@ export default function Cart() {
               )
             })
           )}
-          <div className="total">{`Total: $${total}`}</div>
-          <form className="checkout">
-            <button
-              type="submit"
-              className="goToCheckout"
-              onClick={handleCheckout}
-            >
-              Checkout
-            </button>
-          </form>
+          <section className="checkout">
+            <p>{`Total: $${total}`}</p>
+            <form className="goToCheckout">
+              <button
+                type="submit"
+                className="checkoutButton"
+                onClick={handleCheckout}
+              >
+                Checkout
+              </button>
+            </form>
+          </section>
         </div>
       </>
     )
