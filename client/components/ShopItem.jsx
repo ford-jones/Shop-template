@@ -32,9 +32,11 @@ export default function ShopItem() {
   console.log('cart: ', cart)
   useEffect(async () => {
     await dispatch(fetchJewelery())
+
+    console.log('hit')
     const fetchCart = localStorage.getItem('cartItem')
     const cartItems = JSON.parse(fetchCart)
-    setCart(cartItems)
+    setCart(cartItems ? cartItems : [])
   }, [])
 
   return (

@@ -35,12 +35,12 @@ export default function Cart() {
 
     // setLoading(true)
 
-    let deletedItem = cart.filter((x) => {
+    let deleteItem = cart.filter((x) => {
       return x.id != e.target.id
     })
-
     localStorage.removeItem('cartItem')
-    let newCartString = JSON.stringify(deletedItem)
+    let newCartString = JSON.stringify(deleteItem)
+
     return localStorage.setItem('cartItem', newCartString)
   }
 
@@ -71,16 +71,18 @@ export default function Cart() {
           {loading ? (
             <Loader />
           ) : (
-            <>
-              <p>Uh oh!</p>
-              <p>Looks like your cart is empty!</p>
-              <br></br>
-              <p>
-                If you would like to browse products click
-                <Link to="/shop">here!</Link>
-                <Outlet />
-              </p>
-            </>
+            localStorage.removeItem('cartItem') && (
+              <>
+                <p>Uh oh!</p>
+                <p>Looks like your cart is empty!</p>
+                <br></br>
+                <p>
+                  If you would like to browse products click
+                  <Link to="/shop">here!</Link>
+                  <Outlet />
+                </p>
+              </>
+            )
           )}
         </div>
       </>
