@@ -6,6 +6,7 @@ import Home from './Home'
 import Shop from './Shop'
 import ShopItem from './ShopItem'
 import Cart from './Cart'
+import Checkout from './Checkout'
 import About from './About'
 import Faqs from './Faqs'
 import Contact from './Contact'
@@ -23,6 +24,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/faq" element={<Faqs />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/Checkout" element={<Checkout />} />
           <Route path="/admin/inquiries" element={<AdminInquiries />} />
         </Routes>
       </div>
