@@ -91,6 +91,18 @@ export default function Cart() {
                   <p>{cartItem.name}</p>
                   <p>{cartItem.material}</p>
                   <p>{`$${cartItem.price}`}</p>
+                  <section>
+                    <form className="quantity">
+                      <p>Quantity: </p>
+                      <button type="submit" className="minusQuantity">
+                        -
+                      </button>
+                      <p>1</p>
+                      <button type="submit" className="addQuantity">
+                        +
+                      </button>
+                    </form>
+                  </section>
                   <form className="clearCart">
                     <button
                       id={cartItem.id}
