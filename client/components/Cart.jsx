@@ -13,18 +13,6 @@ export default function Cart() {
   const fetchCart = localStorage.getItem('cartItem')
   const cartItems = JSON.parse(fetchCart)
 
-  const initTotal = 0
-
-  const total = cart
-    .map((cartItem) => {
-      return cartItem.price
-    })
-    .reduce(
-      (previousValue, currentValue) => previousValue + currentValue,
-      initTotal
-    )
-  console.log('total: ', total)
-
   function handleCheckout(e) {
     e.preventDefault()
     navigate('/checkout')
@@ -62,7 +50,9 @@ export default function Cart() {
     }, 3000)
   }, [cart])
 
-  if (cart.length < 1) {
+  /*  if (cart == null || cart.length < 1)  */
+  if (cart.length <= 0) {
+    localStorage.removeItem('cartItem')
     return (
       <>
         <div className="cart">
@@ -71,23 +61,32 @@ export default function Cart() {
           {loading ? (
             <Loader />
           ) : (
-            localStorage.removeItem('cartItem') && (
-              <>
-                <p>Uh oh!</p>
-                <p>Looks like your cart is empty!</p>
-                <br></br>
-                <p>
-                  If you would like to browse products click
-                  <Link to="/shop">here!</Link>
-                  <Outlet />
-                </p>
-              </>
-            )
+            <>
+              <p>Uh oh!</p>
+              <p>Looks like your cart is empty!</p>
+              <br></br>
+              <p>
+                If you would like to browse products click
+                <Link to="/shop">here!</Link>
+                <Outlet />
+              </p>
+            </>
           )}
         </div>
       </>
     )
   } else {
+    const initTotal = 0
+
+    const total = cart
+      .map((cartItem) => {
+        return cartItem.price
+      })
+      .reduce(
+        (previousValue, currentValue) => previousValue + currentValue,
+        initTotal
+      )
+    console.log('total: ', total)
     return (
       <>
         <div className="cart">
