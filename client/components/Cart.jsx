@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { useNavigate, Link, Outlet } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 import Nav from './Nav'
 import Loader from './Loader'
+import CartEmpty from './subcomponents/CartEmpty'
 
 export default function Cart() {
   const [loading, setLoading] = useState(true)
@@ -20,8 +21,6 @@ export default function Cart() {
 
   function handleCart(e) {
     e.preventDefault()
-
-    // setLoading(true)
 
     let deleteItem = cart.filter((x) => {
       return x.id != e.target.id
@@ -50,7 +49,6 @@ export default function Cart() {
     }, 3000)
   }, [cartItems])
 
-  /*  if (cart == null || cart.length < 1)  */
   if (cartItems <= 0) {
     localStorage.removeItem('cartItem')
     return (
@@ -58,20 +56,7 @@ export default function Cart() {
         <div className="cart">
           <h1 className="header">Cart</h1>
           <Nav />
-          {loading ? (
-            <Loader />
-          ) : (
-            <>
-              <p>Uh oh!</p>
-              <p>Looks like your cart is empty!</p>
-              <br></br>
-              <p>
-                If you would like to browse products click
-                <Link to="/shop">here!</Link>
-                <Outlet />
-              </p>
-            </>
-          )}
+          {loading ? <Loader /> : <CartEmpty />}
         </div>
       </>
     )
