@@ -28,8 +28,8 @@ export default function Cart() {
     })
     localStorage.removeItem('cartItem')
     let newCartString = JSON.stringify(deleteItem)
-
-    return localStorage.setItem('cartItem', newCartString)
+    let cartStorage = localStorage.setItem('cartItem', newCartString)
+    return cartStorage
   }
 
   function handleQuantity(e) {
@@ -48,10 +48,10 @@ export default function Cart() {
       setCart(cartItems)
       setLoading(false)
     }, 3000)
-  }, [cart])
+  }, [cartItems])
 
   /*  if (cart == null || cart.length < 1)  */
-  if (cart.length <= 0) {
+  if (cartItems <= 0) {
     localStorage.removeItem('cartItem')
     return (
       <>
