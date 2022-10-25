@@ -43,8 +43,8 @@ export default function Cart() {
   }
 
   useEffect(() => {
+    setCart(cartItems)
     setTimeout(() => {
-      setCart(cartItems)
       setLoading(false)
     }, 3000)
   }, [cartItems])
