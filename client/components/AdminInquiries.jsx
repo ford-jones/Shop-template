@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 
-import Nav from './Nav'
-import Loader from './Loader'
+import Nav from './subcomponents/Nav'
+import Loader from './subcomponents/Loader'
 
 import { getInquiries } from '../apis/inquiries'
 

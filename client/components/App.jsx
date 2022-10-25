@@ -4,7 +4,7 @@ import { Route, Routes } from 'react-router-dom'
 
 import Home from './Home'
 import Shop from './Shop'
-import ShopItem from './ShopItem'
+import ShopItem from './subcomponents/ShopItem'
 import Cart from './Cart'
 import Checkout from './Checkout'
 import About from './About'

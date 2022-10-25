@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link, Outlet } from 'react-router-dom'
 
-import Nav from './Nav'
+import Nav from './subcomponents/Nav'
 
 export default function Faqs() {
   return (
