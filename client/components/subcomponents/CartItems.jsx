@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 
 export default function CartItems() {
-  // const [cart, setCart] = useState([])
   const [count, setCount] = useState(1)
 
   const fetchCart = localStorage.getItem('cartItem')
@@ -29,9 +28,6 @@ export default function CartItems() {
       setCount(count + 1)
     }
   }
-  // useEffect(() => {
-  //   setCart(cartItems)
-  // }, [cartItems])
 
   return cartItems.map((cartItem) => {
     return (
