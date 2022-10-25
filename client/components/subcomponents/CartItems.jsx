@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 
 export default function CartItems() {
-  const [cart, setCart] = useState([])
+  // const [cart, setCart] = useState([])
   const [count, setCount] = useState(1)
 
   const fetchCart = localStorage.getItem('cartItem')
@@ -10,7 +10,7 @@ export default function CartItems() {
   function handleCart(e) {
     e.preventDefault()
 
-    let deleteItem = cart.filter((x) => {
+    let deleteItem = cartItems.filter((x) => {
       return x.id != e.target.id
     })
     localStorage.removeItem('cartItem')
@@ -29,11 +29,11 @@ export default function CartItems() {
       setCount(count + 1)
     }
   }
-  useEffect(() => {
-    setCart(cartItems)
-  }, [cartItems])
+  // useEffect(() => {
+  //   setCart(cartItems)
+  // }, [cartItems])
 
-  return cart.map((cartItem) => {
+  return cartItems.map((cartItem) => {
     return (
       <>
         <img
