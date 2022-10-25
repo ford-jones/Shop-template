@@ -30,10 +30,8 @@ export default function CartItems() {
     }
   }
   useEffect(() => {
-    setTimeout(() => {
-      setCart(cartItems)
-    }, 3000)
-  }, [])
+    setCart(cartItems)
+  }, [cartItems])
 
   return cart.map((cartItem) => {
     return (
