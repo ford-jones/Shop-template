@@ -5,7 +5,7 @@ exports.up = function (knex) {
     table.string('materials')
     table.string('description')
     table.string('weight')
-    table.string('price')
+    table.integer('price')
   })
 }
 

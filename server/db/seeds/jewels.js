@@ -12,7 +12,7 @@ exports.seed = function (knex) {
           description:
             'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia sequi neque quam rem consequuntur exercitationem. Veritatis quaerat in fugit. Dignissimos dolorem incidunt at error quos eveniet dolores consectetur deserunt reiciendis.',
           weight: '230g',
-          price: '$2200',
+          price: 2200,
         },
         {
           id: 2,
@@ -21,7 +21,7 @@ exports.seed = function (knex) {
           description:
             'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia sequi neque quam rem consequuntur exercitationem. Veritatis quaerat in fugit. Dignissimos dolorem incidunt at error quos eveniet dolores consectetur deserunt reiciendis.',
           weight: '200g',
-          price: '$3000',
+          price: 3000,
         },
         {
           id: 3,
@@ -30,7 +30,7 @@ exports.seed = function (knex) {
           description:
             'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia sequi neque quam rem consequuntur exercitationem. Veritatis quaerat in fugit. Dignissimos dolorem incidunt at error quos eveniet dolores consectetur deserunt reiciendis.',
           weight: '190g',
-          price: '$1600',
+          price: 1600,
         },
       ])
     })

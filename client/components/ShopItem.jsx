@@ -6,11 +6,6 @@ import { fetchJewelery, selectJewelery } from '../slices/jewelery'
 
 import Nav from './Nav'
 
-// Write a function that takes the data of the page as input when add to cart is clicked
-// The data needs to be held in memory somewhere so that it is not lost when the user navigates away
-// The data needs to be accessible from the memory so it can added to, deleted, updated and fetched
-// The data will be pulled down and displayed in the cart component
-
 export default function ShopItem() {
   const [cart, setCart] = useState([])
   const jewelery = useSelector(selectJewelery)
@@ -24,36 +19,24 @@ export default function ShopItem() {
   })
   console.log(foundJewelery)
 
-  // function addToCart() {
-  //   const cartData = [...cart, foundJewelery]
-  //   const clickedItem = JSON.stringify(cartData)
-  //   console.log('cartData: ', cartData)
-  //   console.log('clickedItem: ', clickedItem)
-
-  // }
-
   function handleSubmit(e) {
-    console.log('hit!')
-    // const navigate = useNavigate()
+    // console.log('hit!')
     e.preventDefault()
-    // try {
     const cartData = [...cart, foundJewelery]
     const clickedItem = JSON.stringify(cartData)
-    // setCart(clickedItem)
     localStorage.setItem('cartItem', clickedItem)
 
     redirect('/cart')
   }
-  //   } catch (err) {
-  //     console.error(err)
-  //   }
-  // }
+
   console.log('cart: ', cart)
   useEffect(async () => {
     await dispatch(fetchJewelery())
+
+    console.log('hit')
     const fetchCart = localStorage.getItem('cartItem')
     const cartItems = JSON.parse(fetchCart)
-    setCart(cartItems)
+    setCart(cartItems ? cartItems : [])
   }, [])
 
   return (
@@ -71,14 +54,11 @@ export default function ShopItem() {
           <p>{foundJewelery.materials}</p>
           <p>{foundJewelery.description}</p>
           <p>{foundJewelery.weight}</p>
-          <p>{foundJewelery.price}</p>
+          <p>{`$${foundJewelery.price}`}</p>
           <form className="addToCart">
-            {/* <Link to="/cart"> */}
             <button type="submit" className="cartButton" onClick={handleSubmit}>
               add to cart
             </button>
-            {/* </Link>
-            <Outlet /> */}
           </form>
         </div>
       </div>

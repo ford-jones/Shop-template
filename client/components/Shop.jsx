@@ -30,7 +30,7 @@ export default function Shop() {
                 alt="jewelPhoto"
               />
               <p>{jewel.name}</p>
-              <p>{jewel.price}</p>
+              <p>{`$${jewel.price}`}</p>
             </Link>
             <Outlet />
           </div>
