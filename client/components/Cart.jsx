@@ -24,7 +24,7 @@ export default function Cart() {
       setCart(cartItems)
       setLoading(false)
     }, 3000)
-  }, [cart])
+  }, [cartItems])
 
   if (cartItems <= 0) {
     localStorage.removeItem('cartItem')
