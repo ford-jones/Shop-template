@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import Nav from './Nav'
-import Loader from './Loader'
+import Nav from './subcomponents/Nav'
+import Loader from './subcomponents/Loader'
 import CartEmpty from './subcomponents/CartEmpty'
 
 export default function Cart() {

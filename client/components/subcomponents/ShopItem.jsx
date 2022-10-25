@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 
 import { fetchJewelery, selectJewelery } from '../../slices/jewelery'
 
-import Nav from '../Nav'
+import Nav from './Nav'
 
 export default function ShopItem() {
   const [cart, setCart] = useState([])

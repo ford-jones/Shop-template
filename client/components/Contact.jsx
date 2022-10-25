@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Nav from './Nav'
+import Nav from './subcomponents/Nav'
 import ContactForm from './subcomponents/ContactForm'
 
 export default function Contact() {
