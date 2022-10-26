@@ -5,7 +5,7 @@ function getJewelery(db = connection) {
 }
 
 function addJewelery(jewel, db = connection) {
-  console.log('db.js data: ', question)
+  console.log('db.js data: ', jewel)
   return db('jewels')
   .insert({
     name: jewel.name, 
