@@ -1,3 +1,4 @@
+// import { response } from 'express'
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
@@ -6,8 +7,11 @@ import { postJewelery } from '../apis/jewelery'
 import AdminNav from './subcomponents/AdminNav'
 
 export default function AdminProducts() {
-  // const [imageForm, setImageForm] = useState()
   // const [filePresent, setFilePresent] = useState(false)
+  const [imageForm, setImageForm] = useState({
+    preview: '',
+    data: '',
+  })
   const [textForm, setTextForm] = useState({
     name: '',
     materials: '',
@@ -21,6 +25,25 @@ export default function AdminProducts() {
     e.preventDefault()
     setTextForm({ ...textForm, [e.target.name]: e.target.value })
   }
+  function handleImage(e) {
+    e.preventDefault()
+    console.log('product image: ', e.target.files[0])
+
+    let formData = new FormData()
+    formData.append('file', imageForm.data)
+
+    fetch('http://localhost:3000/admin/products', {
+      method: 'POST',
+      body: formData,
+    })
+      .then((res) => {
+        console.log('response', res)
+        return res.json
+      })
+      .catch((err) => {
+        console.error(err)
+      })
+  }
 
   function handleSubmit(e) {
     e.preventDefault()
@@ -30,11 +53,6 @@ export default function AdminProducts() {
       .catch((err) => {
         console.error(err)
       })
-  }
-
-  function handleImage(e) {
-    e.preventDefault()
-    console.log('product image: ', e.target.files[0])
   }
 
   function handleNavigate(e) {
