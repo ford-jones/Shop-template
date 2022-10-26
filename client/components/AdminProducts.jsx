@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import AdminNav from './subcomponents/AdminNav'
 
 export default function AdminProducts() {
+  // const [imageForm, setImageForm] = useState()
   const [textForm, setTextForm] = useState({
     name: '',
     materials: '',
@@ -10,6 +12,7 @@ export default function AdminProducts() {
     weight: '',
     price: '',
   })
+  const navigate = useNavigate()
 
   function handleChange(e) {
     e.preventDefault()
@@ -21,8 +24,14 @@ export default function AdminProducts() {
     console.log('new product: ', textForm)
   }
 
-  function handleDelete(e) {
+  function handleImage(e) {
     e.preventDefault()
+    console.log(e.target.files[0])
+  }
+
+  function handleNavigate(e) {
+    e.preventDefault()
+    navigate('/admin')
   }
 
   return (
@@ -95,12 +104,14 @@ export default function AdminProducts() {
         </section>
         <section className="productImageForm">
           <p>Upload an image here!</p>
-          <div className="imageDrop"></div>
+          <form>
+            <input type="file" name="file" onChange={handleImage}></input>
+          </form>
         </section>
         <section className="deleteProduct">
           <form className="removeProduct">
-            <button type="submit" onClick={handleDelete} className="button">
-              Delete an item:
+            <button type="submit" onClick={handleNavigate} className="button">
+              Delete items:
             </button>
           </form>
         </section>
