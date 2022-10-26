@@ -10,6 +10,7 @@ import Checkout from './Checkout'
 import About from './About'
 import Faqs from './Faqs'
 import Contact from './Contact'
+import AdminHome from './AdminHome'
 import AdminInquiries from './AdminInquiries'
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
           <Route path="/faq" element={<Faqs />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/checkout" element={<Checkout />} />
+          <Route path="/admin" element={<AdminHome />} />
           <Route path="/admin/inquiries" element={<AdminInquiries />} />
         </Routes>
       </div>
