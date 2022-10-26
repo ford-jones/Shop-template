@@ -119,3 +119,12 @@ body {
   flex-direction: row;
   margin-bottom: 0px;
 }
+
+.imageDrop {
+  height: 100px;
+  width: 100px;
+  margin: 5px;
+  position: relative;
+  border: 2px solid lightgray;
+  border-radius: 10px;
+}
