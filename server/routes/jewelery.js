@@ -16,4 +16,19 @@ router.get('*', (req, res) => {
     })
 })
 
+router.post('/', (req, res) => {
+  let jewel = req.body
+
+  console.log('route data: ', jewel)
+  db.addJewelery(jewel)
+
+    .then(() => {
+      res.sendStatus(201)
+      return null
+    }).catch((err) => {
+      console.log(err)
+      res.sendStatus(500).json({message: 'something went wrong'})
+    })
+})
+
 module.exports = router
