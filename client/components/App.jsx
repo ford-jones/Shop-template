@@ -12,6 +12,8 @@ import Faqs from './Faqs'
 import Contact from './Contact'
 import AdminHome from './AdminHome'
 import AdminInquiries from './AdminInquiries'
+import AdminProducts from './AdminProducts'
+import AdminOrders from './AdminOrders'
 
 function App() {
   return (
@@ -28,6 +30,8 @@ function App() {
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/admin" element={<AdminHome />} />
           <Route path="/admin/inquiries" element={<AdminInquiries />} />
+          <Route path="/admin/products" element={<AdminProducts />} />
+          <Route path="/admin/orders" element={<AdminOrders />} />
         </Routes>
       </div>
     </>
