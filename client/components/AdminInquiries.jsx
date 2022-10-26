@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-import Nav from './subcomponents/Nav'
+import AdminNav from './subcomponents/AdminNav'
 import Loader from './subcomponents/Loader'
 
 import { getInquiries } from '../apis/inquiries'
@@ -27,7 +27,7 @@ export default function AdminInquiries() {
   return (
     <>
       <h1 className="header">Admin: Inquiries</h1>
-      <Nav />
+      <AdminNav />
       {loading ? (
         <Loader />
       ) : (
