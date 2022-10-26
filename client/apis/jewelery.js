@@ -7,4 +7,3 @@ export function getJewelery() {
     return res.body.jewelery
   })
 }
-
