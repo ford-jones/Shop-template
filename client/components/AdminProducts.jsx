@@ -1,10 +1,13 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
+import { postJewelery } from '../apis/jewelery'
+
 import AdminNav from './subcomponents/AdminNav'
 
 export default function AdminProducts() {
   // const [imageForm, setImageForm] = useState()
+  // const [filePresent, setFilePresent] = useState(false)
   const [textForm, setTextForm] = useState({
     name: '',
     materials: '',
@@ -22,11 +25,16 @@ export default function AdminProducts() {
   function handleSubmit(e) {
     e.preventDefault()
     console.log('new product: ', textForm)
+    postJewelery(textForm)
+      .then(navigate('/admin'))
+      .catch((err) => {
+        console.error(err)
+      })
   }
 
   function handleImage(e) {
     e.preventDefault()
-    console.log(e.target.files[0])
+    console.log('product image: ', e.target.files[0])
   }
 
   function handleNavigate(e) {

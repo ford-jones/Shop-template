@@ -7,3 +7,14 @@ export function getJewelery() {
     return res.body.jewelery
   })
 }
+
+export function postJewelery(data) {
+  console.log('api data: ', data)
+
+  return request
+    .post(rootUrl + '/jewelery')
+    .send(data)
+    .then((req) => {
+      return req.body.jewelery
+    })
+}
