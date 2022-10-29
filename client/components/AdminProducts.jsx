@@ -1,4 +1,3 @@
-// import { response } from 'express'
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
@@ -8,6 +7,7 @@ import AdminNav from './subcomponents/AdminNav'
 
 export default function AdminProducts() {
   // const [filePresent, setFilePresent] = useState(false)
+  const [postStatus, setPostStatus] = useState('')
   const [imageForm, setImageForm] = useState({
     preview: '',
     data: '',
@@ -27,7 +27,6 @@ export default function AdminProducts() {
   }
   function handleImage(e) {
     e.preventDefault()
-    console.log('product image: ', e.target.files[0])
 
     let formData = new FormData()
     formData.append('file', imageForm.data)
@@ -37,12 +36,19 @@ export default function AdminProducts() {
       body: formData,
     })
       .then((res) => {
-        console.log('response', res)
-        return res.json
+        console.log(res)
+        setPostStatus(res.status)
+        const image = {
+          preview: URL.createObjectURL(e.target.files[0]),
+          data: e.target.files[0],
+        }
+        console.log('image', image)
+        setImageForm(image)
       })
       .catch((err) => {
         console.error(err)
       })
+    console.log(postStatus)
   }
 
   function handleSubmit(e) {
@@ -133,6 +139,7 @@ export default function AdminProducts() {
           <form>
             <input type="file" name="file" onChange={handleImage}></input>
           </form>
+          <img src={image.preview} alt="productPreview"></img>
         </section>
         <section className="deleteProduct">
           <form className="removeProduct">
