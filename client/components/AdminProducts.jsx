@@ -1,8 +1,17 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+
+import { postJewelery } from '../apis/jewelery'
 
 import AdminNav from './subcomponents/AdminNav'
 
 export default function AdminProducts() {
+  // const [filePresent, setFilePresent] = useState(false)
+  const [postStatus, setPostStatus] = useState('')
+  const [imageForm, setImageForm] = useState({
+    preview: '',
+    data: '',
+  })
   const [textForm, setTextForm] = useState({
     name: '',
     materials: '',
@@ -10,19 +19,51 @@ export default function AdminProducts() {
     weight: '',
     price: '',
   })
+  const navigate = useNavigate()
 
   function handleChange(e) {
     e.preventDefault()
     setTextForm({ ...textForm, [e.target.name]: e.target.value })
   }
+  function handleImage(e) {
+    e.preventDefault()
+
+    let formData = new FormData()
+    formData.append('file', imageForm.data)
+
+    fetch('http://localhost:3000/admin/products', {
+      method: 'POST',
+      body: formData,
+    })
+      .then((res) => {
+        console.log(res)
+        setPostStatus(res.status)
+        const image = {
+          preview: URL.createObjectURL(e.target.files[0]),
+          data: e.target.files[0],
+        }
+        console.log('image', image)
+        setImageForm(image)
+      })
+      .catch((err) => {
+        console.error(err)
+      })
+    console.log(postStatus)
+  }
 
   function handleSubmit(e) {
     e.preventDefault()
     console.log('new product: ', textForm)
+    postJewelery(textForm)
+      .then(navigate('/admin'))
+      .catch((err) => {
+        console.error(err)
+      })
   }
 
-  function handleDelete(e) {
+  function handleNavigate(e) {
     e.preventDefault()
+    navigate('/admin')
   }
 
   return (
@@ -95,12 +136,15 @@ export default function AdminProducts() {
         </section>
         <section className="productImageForm">
           <p>Upload an image here!</p>
-          <div className="imageDrop"></div>
+          <form>
+            <input type="file" name="file" onChange={handleImage}></input>
+          </form>
+          <img src={imageForm.preview} alt="productPreview"></img>
         </section>
         <section className="deleteProduct">
           <form className="removeProduct">
-            <button type="submit" onClick={handleDelete} className="button">
-              Delete an item:
+            <button type="submit" onClick={handleNavigate} className="button">
+              Delete items:
             </button>
           </form>
         </section>
