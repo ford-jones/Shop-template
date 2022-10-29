@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { postJewelery } from '../apis/jewelery'
+import { postJeweleryImage, postJeweleryText } from '../apis/jewelery'
 
 import AdminNav from './subcomponents/AdminNav'
 
@@ -31,30 +31,32 @@ export default function AdminProducts() {
     let formData = new FormData()
     formData.append('file', imageForm.data)
 
-    fetch('http://localhost:3000/admin/products', {
+    fetch('http://localhost:3000/api/jewelery', {
       method: 'POST',
       body: formData,
     })
       .then((res) => {
-        console.log(res)
         setPostStatus(res.status)
         const image = {
           preview: URL.createObjectURL(e.target.files[0]),
           data: e.target.files[0],
         }
-        console.log('image', image)
+        console.log('component data: ', image)
         setImageForm(image)
+      })
+      .finally(() => {
+        postJeweleryImage(imageForm)
       })
       .catch((err) => {
         console.error(err)
       })
-    console.log(postStatus)
+    console.log('POST status: ', postStatus)
   }
 
   function handleSubmit(e) {
     e.preventDefault()
     console.log('new product: ', textForm)
-    postJewelery(textForm)
+    postJeweleryText(textForm)
       .then(navigate('/admin'))
       .catch((err) => {
         console.error(err)
@@ -115,17 +117,17 @@ export default function AdminProducts() {
             <input
               type="text"
               name="weight"
-              placeholder="Please give a weight in grams (g)..."
+              placeholder="In Grams (g)..."
               value={textForm.weight}
               onChange={handleChange}
             ></input>
             <label htmlFor="price" noValidate>
-              Product price:
+              Product price: $
             </label>
             <input
               type="text"
               name="price"
-              placeholder="Do not add a dollar($) sign."
+              placeholder="Do not add a dollar sign."
               value={textForm.price}
               onChange={handleChange}
             ></input>
