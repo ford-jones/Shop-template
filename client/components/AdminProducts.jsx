@@ -139,7 +139,7 @@ export default function AdminProducts() {
           <form>
             <input type="file" name="file" onChange={handleImage}></input>
           </form>
-          <img src={image.preview} alt="productPreview"></img>
+          <img src={imageForm.preview} alt="productPreview"></img>
         </section>
         <section className="deleteProduct">
           <form className="removeProduct">
