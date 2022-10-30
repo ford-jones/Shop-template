@@ -6,7 +6,6 @@ import { postJeweleryImage, postJeweleryText } from '../apis/jewelery'
 import AdminNav from './subcomponents/AdminNav'
 
 export default function AdminProducts() {
-  // const [filePresent, setFilePresent] = useState(false)
   const [postStatus, setPostStatus] = useState('')
   const [imageForm, setImageForm] = useState({
     preview: '',
@@ -31,8 +30,6 @@ export default function AdminProducts() {
     let formData = new FormData()
     formData.append('file', imageForm.data)
 
-    //  + data hits in the api
-    //  - data doesnt show up in the console log until after the 1st tick (you have to click twice)
     fetch('http://localhost:3000/api/jewelery', {
       method: 'POST',
       body: formData,
@@ -44,7 +41,6 @@ export default function AdminProducts() {
           preview: URL.createObjectURL(e.target.files[0]),
           data: e.target.files[0],
         }
-        console.log('component data: ', image)
         setImageForm(image)
       })
       .catch((err) => {
@@ -52,8 +48,6 @@ export default function AdminProducts() {
       })
   }
 
-  //  + if postJeweleryImage is handled here, the data comes through on the first tick as it should
-  //  - null reading in jewelery/api, possible cause of memory leak on user shop route?
   function handleSubmit(e) {
     e.preventDefault()
     console.log('new product: ', textForm)
