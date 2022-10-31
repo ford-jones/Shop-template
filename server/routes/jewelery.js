@@ -8,7 +8,7 @@ const storageEngine = multer.diskStorage({
   filename: (req, file, cb) => cb(null, file.originalName),
 })
 
-const imageUpload = multer({ storage: storageEngine })
+const upload = multer({ storage: storageEngine })
 
 router.get('*', (req, res) => {
   db.getJewelery()
@@ -38,7 +38,7 @@ router.post('/', (req, res) => {
     })
 })
 
-router.post('/single', imageUpload.single('image'), (req, res) => {
+router.post('/single', upload.single('image'), (req, res) => {
   console.log('route data: ', req.file)
   res.sendStatus(201)
 })
