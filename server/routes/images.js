@@ -7,7 +7,7 @@ const filePath = path.resolve(__dirname, '../' + 'public/images')
 
 const storageEngine = multer.diskStorage({
   destination: (req, file, cb) => {console.log('file: ', file), cb(null, `${filePath}`)},
-  filename: (req, file, cb) => cb(null, `${file.originalName}`),
+  filename: (req, file, cb) => cb(null, `${file.originalname}`),
 })
 
 const fileUpload = multer({ storage: storageEngine })
