@@ -8,7 +8,7 @@ export function postJeweleryImage(img) {
   .post(rootUrl + '/images')
   .send(img)
   .then((req) => {
-    console.log('api return request: ', req)
+    console.log('api return req: ', req)
     return req
   })
 }
