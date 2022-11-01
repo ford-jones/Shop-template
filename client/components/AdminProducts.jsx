@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { postJeweleryImage, postJeweleryText } from '../apis/jewelery'
+import {  postJeweleryText } from '../apis/jewelery'
+import {postJeweleryImage} from '../apis/images'
 
 import AdminNav from './subcomponents/AdminNav'
 
@@ -28,9 +29,9 @@ export default function AdminProducts() {
     e.preventDefault()
 
     let formData = new FormData()
-    formData.append('file', imageForm.data)
+    formData.append('image', imageForm.data)
 
-    fetch('http://localhost:3000/api/jewelery', {
+    fetch('http://localhost:3000/api/v1/images', {
       method: 'POST',
       body: formData,
     })
@@ -134,8 +135,8 @@ export default function AdminProducts() {
         </section>
         <section className="productImageForm">
           <p>Upload an image here!</p>
-          <form>
-            <input type="file" name="file" onChange={handleImage}></input>
+          <form action="/images" encType="multipart/form-data" method="post">
+            <input type="file" name="image" onChange={handleImage}></input>
           </form>
           <img src={imageForm.preview} alt="productPreview"></img>
         </section>
