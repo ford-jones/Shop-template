@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { postJewelery } from '../apis/jewelery'
+import {  postJeweleryText } from '../apis/jewelery'
+import {postJeweleryImage} from '../apis/images'
 
 import AdminNav from './subcomponents/AdminNav'
 
 export default function AdminProducts() {
-  // const [filePresent, setFilePresent] = useState(false)
   const [postStatus, setPostStatus] = useState('')
   const [imageForm, setImageForm] = useState({
     preview: '',
@@ -29,32 +29,31 @@ export default function AdminProducts() {
     e.preventDefault()
 
     let formData = new FormData()
-    formData.append('file', imageForm.data)
+    formData.append('image', imageForm.data)
 
-    fetch('http://localhost:3000/admin/products', {
+    fetch('http://localhost:3000/api/v1/images', {
       method: 'POST',
       body: formData,
     })
       .then((res) => {
-        console.log(res)
         setPostStatus(res.status)
+        console.log('POST status: ', postStatus)
         const image = {
           preview: URL.createObjectURL(e.target.files[0]),
           data: e.target.files[0],
         }
-        console.log('image', image)
         setImageForm(image)
       })
       .catch((err) => {
         console.error(err)
       })
-    console.log(postStatus)
   }
 
   function handleSubmit(e) {
     e.preventDefault()
     console.log('new product: ', textForm)
-    postJewelery(textForm)
+    postJeweleryImage(imageForm)
+    postJeweleryText(textForm)
       .then(navigate('/admin'))
       .catch((err) => {
         console.error(err)
@@ -115,17 +114,17 @@ export default function AdminProducts() {
             <input
               type="text"
               name="weight"
-              placeholder="Please give a weight in grams (g)..."
+              placeholder="In Grams (g)..."
               value={textForm.weight}
               onChange={handleChange}
             ></input>
             <label htmlFor="price" noValidate>
-              Product price:
+              Product price: $
             </label>
             <input
               type="text"
               name="price"
-              placeholder="Do not add a dollar($) sign."
+              placeholder="Do not add a dollar sign."
               value={textForm.price}
               onChange={handleChange}
             ></input>
@@ -136,8 +135,8 @@ export default function AdminProducts() {
         </section>
         <section className="productImageForm">
           <p>Upload an image here!</p>
-          <form>
-            <input type="file" name="file" onChange={handleImage}></input>
+          <form action="/images" encType="multipart/form-data" method="post">
+            <input type="file" name="image" onChange={handleImage}></input>
           </form>
           <img src={imageForm.preview} alt="productPreview"></img>
         </section>

@@ -8,7 +8,7 @@ export function getJewelery() {
   })
 }
 
-export function postJewelery(data) {
+export function postJeweleryText(data) {
   console.log('api data: ', data)
 
   return request
@@ -17,4 +17,15 @@ export function postJewelery(data) {
     .then((req) => {
       return req.body.jewelery
     })
+}
+
+export function postJeweleryImage(img) {
+  console.log('api function arg: ', img)
+  return request
+  .post(rootUrl + '/jewelery')
+  .send(img)
+  .then((req) => {
+    console.log('api return request: ', req)
+    return req
+  })
 }
