@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import {  postJeweleryText } from '../apis/jewelery'
-import {postJeweleryImage} from '../apis/images'
+import { postJeweleryText } from '../apis/jewelery'
+import { postJeweleryImage } from '../apis/images'
 
 import AdminNav from './subcomponents/AdminNav'
 
@@ -25,6 +25,7 @@ export default function AdminProducts() {
     e.preventDefault()
     setTextForm({ ...textForm, [e.target.name]: e.target.value })
   }
+
   function handleImage(e) {
     e.preventDefault()
 
@@ -54,6 +55,7 @@ export default function AdminProducts() {
     console.log('new product: ', textForm)
     postJeweleryImage(imageForm)
     postJeweleryText(textForm)
+    handleImage(e)
       .then(navigate('/admin'))
       .catch((err) => {
         console.error(err)
