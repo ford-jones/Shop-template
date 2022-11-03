@@ -6,6 +6,11 @@ export default function CartItems() {
   const fetchCart = localStorage.getItem('cartItem')
   const cartItems = JSON.parse(fetchCart)
 
+  const quantities = cartItems.map((cartItem) => {
+    return cartItem.quantity
+  })
+  console.log('quantities: ', quantities)
+
   function handleCart(e) {
     e.preventDefault()
 
@@ -52,7 +57,7 @@ export default function CartItems() {
               >
                 -
               </button>
-              <p>{count}</p>
+              <p>{cartItem.quantity}</p>
               <button
                 name="increment"
                 type="submit"

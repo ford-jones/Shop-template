@@ -21,8 +21,6 @@ export default function ShopItem() {
 
   let foundJewelery = new Object({ ...whichJewelery, quantity: 1 })
 
-  // let addQuantity =
-
   function handleSubmit(e) {
     // console.log('hit!')
     e.preventDefault()

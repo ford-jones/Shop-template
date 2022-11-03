@@ -48,7 +48,7 @@ export default function Cart() {
         (previousValue, currentValue) => previousValue + currentValue,
         initTotal
       )
-    console.log('total: ', total)
+    // console.log('total: ', total)
     return (
       <>
         <div className="cart">
