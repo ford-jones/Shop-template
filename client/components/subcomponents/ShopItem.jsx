@@ -13,11 +13,15 @@ export default function ShopItem() {
 
   const name = useParams()
   let jewelName = name
-  let foundJewelery = jewelery.find((x) => {
+  let whichJewelery = jewelery.find((x) => {
     // console.log('jewelName data: ', jewelName, jewelName.name, x, x.name)
     return x.name == jewelName.name
   })
-  console.log(foundJewelery)
+  console.log('whichJewelery: ', whichJewelery)
+
+  let foundJewelery = new Object({ ...whichJewelery, quantity: 1 })
+
+  // let addQuantity =
 
   function handleSubmit(e) {
     // console.log('hit!')
