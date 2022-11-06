@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import Nav from './subcomponents/Nav'
@@ -12,19 +12,19 @@ export default function Cart() {
   const navigate = useNavigate()
 
   const fetchCart = localStorage.getItem('cartItem')
-  const cartItems = JSON.parse(fetchCart)
+  const cartItems = JSON.parse(fetchCart) // try making this an anonymous function so itcan be passed as a cb inside setCart
 
   function handleCheckout(e) {
     e.preventDefault()
     navigate('/checkout')
   }
 
-  useEffect(() => {
+  useMemo(() => {
     setCart(cartItems)
     setTimeout(() => {
       setLoading(false)
     }, 3000)
-  }, [cartItems])
+  }, [])
 
   if (cartItems <= 0) {
     localStorage.removeItem('cartItem')

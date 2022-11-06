@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 export default function CartItems() {
   // const [count, setCount] = useState(1)
@@ -6,12 +6,21 @@ export default function CartItems() {
   const fetchCart = localStorage.getItem('cartItem')
   const cartItems = JSON.parse(fetchCart)
 
-  // cartItems.map(() => {
-  //   const [count, setCount] = useState(cartItems.quantity)
-  // })
+  function handleCart(e) {
+    e.preventDefault()
+
+    let deleteItem = cartItems.filter((x) => {
+      return x.id != e.target.id
+    })
+
+      localStorage.removeItem('cartItem')
+      let newCartString = JSON.stringify(deleteItem)
+      let cartStorage = localStorage.setItem('cartItem', newCartString)
+      return cartStorage
+  }
 
   return cartItems.map((cartItem) => {
-    const [count, setCount] = useState(1)
+    const [count, setCount] = useState(cartItem.quantity)
 
     function handleQuantity(e) {
       e.preventDefault()
@@ -19,22 +28,9 @@ export default function CartItems() {
 
       if (name === 'decrement') {
         setCount(count - 1)
-        // setCount(count - 1)
       } else if (name === 'increment') {
         setCount(count + 1)
-        // setCount(count + 1)
       }
-    }
-    function handleCart(e) {
-      e.preventDefault()
-
-      let deleteItem = cartItems.filter((x) => {
-        return x.id != e.target.id
-      })
-      localStorage.removeItem('cartItem')
-      let newCartString = JSON.stringify(deleteItem)
-      let cartStorage = localStorage.setItem('cartItem', newCartString)
-      return cartStorage
     }
     return (
       <>
@@ -58,7 +54,7 @@ export default function CartItems() {
               >
                 -
               </button>
-              <p>{count}</p>
+              <p>{cartItem ? count : null}</p>
               <button
                 name="increment"
                 type="submit"
