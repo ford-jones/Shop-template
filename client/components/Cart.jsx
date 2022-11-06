@@ -28,6 +28,7 @@ export default function Cart() {
 
   if (cartItems <= 0) {
     localStorage.removeItem('cartItem')
+
     return (
       <>
         <div className="cart">

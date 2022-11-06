@@ -1,40 +1,41 @@
 import React, { useState } from 'react'
 
 export default function CartItems() {
-  const [count, setCount] = useState(1)
+  // const [count, setCount] = useState(1)
 
   const fetchCart = localStorage.getItem('cartItem')
   const cartItems = JSON.parse(fetchCart)
 
-  const quantities = cartItems.map((cartItem) => {
-    return cartItem.quantity
-  })
-  console.log('quantities: ', quantities)
-
-  function handleCart(e) {
-    e.preventDefault()
-
-    let deleteItem = cartItems.filter((x) => {
-      return x.id != e.target.id
-    })
-    localStorage.removeItem('cartItem')
-    let newCartString = JSON.stringify(deleteItem)
-    let cartStorage = localStorage.setItem('cartItem', newCartString)
-    return cartStorage
-  }
-
-  function handleQuantity(e) {
-    e.preventDefault()
-    const name = e.target.name
-
-    if (name === 'decrement') {
-      setCount(count - 1)
-    } else if (name === 'increment') {
-      setCount(count + 1)
-    }
-  }
+  // cartItems.map(() => {
+  //   const [count, setCount] = useState(cartItems.quantity)
+  // })
 
   return cartItems.map((cartItem) => {
+    const [count, setCount] = useState(1)
+
+    function handleQuantity(e) {
+      e.preventDefault()
+      const name = e.target.name
+
+      if (name === 'decrement') {
+        setCount(count - 1)
+        // setCount(count - 1)
+      } else if (name === 'increment') {
+        setCount(count + 1)
+        // setCount(count + 1)
+      }
+    }
+    function handleCart(e) {
+      e.preventDefault()
+
+      let deleteItem = cartItems.filter((x) => {
+        return x.id != e.target.id
+      })
+      localStorage.removeItem('cartItem')
+      let newCartString = JSON.stringify(deleteItem)
+      let cartStorage = localStorage.setItem('cartItem', newCartString)
+      return cartStorage
+    }
     return (
       <>
         <img
@@ -57,7 +58,7 @@ export default function CartItems() {
               >
                 -
               </button>
-              <p>{cartItem.quantity}</p>
+              <p>{count}</p>
               <button
                 name="increment"
                 type="submit"
