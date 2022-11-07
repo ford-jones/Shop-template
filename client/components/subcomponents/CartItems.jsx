@@ -30,7 +30,7 @@ export default function CartItems() {
         <p>{cartItem.material}</p>
         <p>{`$${cartItem.price}`}</p>
         <section>
-          <Counter id={cartItem.id} />
+          <Counter cartItem={cartItem} />
         </section>
         <form className="clearCart">
           <button
