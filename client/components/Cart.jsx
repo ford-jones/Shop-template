@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import Nav from './subcomponents/Nav'
@@ -19,12 +19,12 @@ export default function Cart() {
     navigate('/checkout')
   }
 
-  useMemo(() => {
-    setCart(cartItems)
-    setTimeout(() => {
+  useEffect(() => {
+    setInterval(() => {
+      setCart(cartItems)
       setLoading(false)
     }, 3000)
-  }, [])
+  }, [cart])
 
   if (cartItems <= 0) {
     localStorage.removeItem('cartItem')

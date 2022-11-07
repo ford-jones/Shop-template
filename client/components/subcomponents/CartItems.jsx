@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
+
+import Counter from './Counter'
 
 export default function CartItems() {
-  // const [count, setCount] = useState(1)
-
   const fetchCart = localStorage.getItem('cartItem')
   const cartItems = JSON.parse(fetchCart)
 
@@ -13,25 +13,12 @@ export default function CartItems() {
       return x.id != e.target.id
     })
 
-      localStorage.removeItem('cartItem')
-      let newCartString = JSON.stringify(deleteItem)
-      let cartStorage = localStorage.setItem('cartItem', newCartString)
-      return cartStorage
+    localStorage.removeItem('cartItem')
+    let newCartString = JSON.stringify(deleteItem)
+    localStorage.setItem('cartItem', newCartString)
   }
 
   return cartItems.map((cartItem) => {
-    const [count, setCount] = useState(cartItem.quantity)
-
-    function handleQuantity(e) {
-      e.preventDefault()
-      const name = e.target.name
-
-      if (name === 'decrement') {
-        setCount(count - 1)
-      } else if (name === 'increment') {
-        setCount(count + 1)
-      }
-    }
     return (
       <>
         <img
@@ -43,28 +30,7 @@ export default function CartItems() {
         <p>{cartItem.material}</p>
         <p>{`$${cartItem.price}`}</p>
         <section>
-          <form className="quantity">
-            <span>
-              Quantity:
-              <button
-                name="decrement"
-                type="submit"
-                className="minusQuantity"
-                onClick={handleQuantity}
-              >
-                -
-              </button>
-              <p>{cartItem ? count : null}</p>
-              <button
-                name="increment"
-                type="submit"
-                className="addQuantity"
-                onClick={handleQuantity}
-              >
-                +
-              </button>
-            </span>
-          </form>
+          <Counter />
         </section>
         <form className="clearCart">
           <button
