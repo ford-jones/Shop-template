@@ -12,7 +12,7 @@ export default function Cart() {
   const navigate = useNavigate()
 
   const fetchCart = localStorage.getItem('cartItem')
-  const cartItems = JSON.parse(fetchCart)
+  const cartItems = JSON.parse(fetchCart) // try making this an anonymous function so itcan be passed as a cb inside setCart
 
   function handleCheckout(e) {
     e.preventDefault()
@@ -20,14 +20,15 @@ export default function Cart() {
   }
 
   useEffect(() => {
-    setCart(cartItems)
-    setTimeout(() => {
+    setInterval(() => {
+      setCart(cartItems)
       setLoading(false)
     }, 3000)
-  }, [cartItems])
+  }, [cart])
 
   if (cartItems <= 0) {
     localStorage.removeItem('cartItem')
+
     return (
       <>
         <div className="cart">
@@ -48,7 +49,7 @@ export default function Cart() {
         (previousValue, currentValue) => previousValue + currentValue,
         initTotal
       )
-    console.log('total: ', total)
+    // console.log('total: ', total)
     return (
       <>
         <div className="cart">
