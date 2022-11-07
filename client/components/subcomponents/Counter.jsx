@@ -10,10 +10,6 @@ import React, { useState } from 'react'
 export default function Counter({ cartItem }) {
   const [count, setCount] = useState(cartItem.quantity)
 
-  // let item = new Array([cartItem])
-  // let sCopy = [...item]
-  // console.log(sCopy)
-
   function handleQuantity(e) {
     e.preventDefault()
     const name = e.target.name
@@ -31,11 +27,18 @@ export default function Counter({ cartItem }) {
     const keepSafe = cartItems.filter((z) => cartItem.id != z.id)
     console.log('Keep Safe: ', keepSafe)
 
-    let itemMatch = cartItems.find((x) => cartItem.id === x.id)
+    const itemMatch = cartItems.find((x) => cartItem.id === x.id)
     console.log('Match Found: ', itemMatch)
 
-    let newItem = new Object({ ...itemMatch, quantity: count })
-    console.log('Object keys: ', newItem)
+    const newItem = new Object({ ...itemMatch, quantity: count })
+    console.log('new item: ', newItem)
+
+    const newArray = [...keepSafe, newItem]
+    console.log('new array: ', newArray)
+
+    localStorage.removeItem('cartItem')
+    const updateQuantity = JSON.stringify(newArray)
+    localStorage.setItem('cartItem', updateQuantity)
   }
   return (
     <>
