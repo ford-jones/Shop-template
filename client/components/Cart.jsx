@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import Nav from './subcomponents/Nav'
@@ -19,7 +19,7 @@ export default function Cart() {
     navigate('/checkout')
   }
 
-  useEffect(() => {
+  useMemo(() => {
     setInterval(() => {
       setCart(cartItems)
       setLoading(false) //  try putting this in it's own setTimeout(), it doesn't need calling more than once
