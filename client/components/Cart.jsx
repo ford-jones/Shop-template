@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import Nav from './subcomponents/Nav'
@@ -12,17 +12,17 @@ export default function Cart() {
   const navigate = useNavigate()
 
   const fetchCart = localStorage.getItem('cartItem')
-  const cartItems = JSON.parse(fetchCart) // try making this an anonymous function so itcan be passed as a cb inside setCart
+  const cartItems = JSON.parse(fetchCart)
 
   function handleCheckout(e) {
     e.preventDefault()
     navigate('/checkout')
   }
 
-  useEffect(() => {
+  useMemo(() => {
     setInterval(() => {
       setCart(cartItems)
-      setLoading(false)
+      setLoading(false) //  try putting this in it's own setTimeout(), it doesn't need calling more than once
     }, 3000)
   }, [cart])
 
@@ -40,16 +40,15 @@ export default function Cart() {
     )
   } else {
     const initTotal = 0
-
     const total = cart
       .map((cartItem) => {
-        return cartItem.price
+        // make a variable that is = to cartItem.price * cartItem.quantity
+        return cartItem.price * cartItem.quantity
       })
       .reduce(
         (previousValue, currentValue) => previousValue + currentValue,
         initTotal
       )
-    // console.log('total: ', total)
     return (
       <>
         <div className="cart">
