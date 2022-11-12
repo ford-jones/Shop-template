@@ -33,7 +33,7 @@ export default function Counter({ cartItem }) {
     const newItem = new Object({ ...itemMatch, quantity: count })
     console.log('new item: ', newItem)
 
-    const newArray = [...keepSafe, newItem]
+    const newArray = [...keepSafe, newItem].sort((a, b) => a.id - b.id)
     console.log('new array: ', newArray)
 
     localStorage.removeItem('cartItem')

@@ -4,7 +4,7 @@ import Counter from './Counter'
 
 export default function CartItems() {
   const fetchCart = localStorage.getItem('cartItem')
-  const cartItems = JSON.parse(fetchCart)
+  const cartItems = JSON.parse(fetchCart).sort((a, b) => a.id - b.id)
 
   function handleCart(e) {
     e.preventDefault()
