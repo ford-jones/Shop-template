@@ -5,10 +5,12 @@ import Nav from './subcomponents/Nav'
 import Loader from './subcomponents/Loader'
 import CartEmpty from './subcomponents/CartEmpty'
 import CartItems from './subcomponents/CartItems'
+import Total from './subcomponents/Total'
 
 export default function Cart() {
   const [loading, setLoading] = useState(true)
   const [cart, setCart] = useState([])
+  // const [total, setTotal] = useState(0)
   const navigate = useNavigate()
 
   const fetchCart = localStorage.getItem('cartItem')
@@ -22,7 +24,7 @@ export default function Cart() {
   useMemo(() => {
     setInterval(() => {
       setCart(cartItems)
-      setLoading(false) //  try putting this in it's own setTimeout(), it doesn't need calling more than once
+      setLoading(false)
     }, 3000)
   }, [cart])
 
@@ -39,16 +41,20 @@ export default function Cart() {
       </>
     )
   } else {
-    const initTotal = 0
-    const total = cart
-      .map((cartItem) => {
-        // make a variable that is = to cartItem.price * cartItem.quantity
-        return cartItem.price * cartItem.quantity
-      })
-      .reduce(
-        (previousValue, currentValue) => previousValue + currentValue,
-        initTotal
-      )
+    // const initTotal = 0
+    // const findPrice = cart.map((cartItem) => {
+    //   return cartItem.price * cartItem.quantity
+    // })
+    // const findTotal = findPrice.reduce(
+    //   (previousValue, currentValue) => previousValue + currentValue,
+    //   initTotal
+    // )
+    // useMemo(() => {
+    //   setInterval(() => {
+    //     setTotal(findTotal)
+    //   }, 1000)
+    // }, [cart])
+    // console.log('total: ', total)
     return (
       <>
         <div className="cart">
@@ -57,7 +63,8 @@ export default function Cart() {
           {loading ? <Loader /> : <CartItems />}
 
           <section className="checkout">
-            <p>{`Total: $${total}`}</p>
+            {/* <p>{`Total: $${total}`}</p> */}
+            <Total cart={cart} />
             <form className="goToCheckout">
               <button
                 type="submit"
@@ -73,3 +80,6 @@ export default function Cart() {
     )
   }
 }
+
+// if using states, setTotal needs to be called in a handler fn to avoid infinite loops
+//  the total algorithm should happen inside the counter component

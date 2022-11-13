@@ -1,12 +1,5 @@
 import React, { useState } from 'react'
 
-//  Get a singular object to work on seperate from the rest of the cart with .find(x) where cartItem.id = x.id
-//  Get everything else in the cart other than ^^^ with a .filter() and keep a shallow copy
-//  The quantity value of the singular object should become equal to the count state onClick
-//  Make a new variable equal to the singular object pushed into the shallow copy of the rest of the cart
-//  Delete cartItem from LS
-//  Set a new cartItem equal to the newly made variable, it will be fetched in the cart and so fourth
-
 export default function Counter({ cartItem }) {
   const [count, setCount] = useState(cartItem.quantity)
 
@@ -15,10 +8,10 @@ export default function Counter({ cartItem }) {
     const name = e.target.name
 
     if (name === 'decrement') {
-      setCount(count - 1)
+      setCount(() => count - 1)
       console.log('id hit!: ', cartItem.id)
     } else if (name === 'increment') {
-      setCount(count + 1)
+      setCount(() => count + 1)
       console.log('id hit!: ', cartItem.id)
     }
     const fetchItems = localStorage.getItem('cartItem')
