@@ -5,12 +5,11 @@ import Nav from './subcomponents/Nav'
 import Loader from './subcomponents/Loader'
 import CartEmpty from './subcomponents/CartEmpty'
 import CartItems from './subcomponents/CartItems'
-import Total from './subcomponents/Total'
 
 export default function Cart() {
   const [loading, setLoading] = useState(true)
   const [cart, setCart] = useState([])
-  // const [total, setTotal] = useState(0)
+
   const navigate = useNavigate()
 
   const fetchCart = localStorage.getItem('cartItem')
@@ -41,30 +40,14 @@ export default function Cart() {
       </>
     )
   } else {
-    // const initTotal = 0
-    // const findPrice = cart.map((cartItem) => {
-    //   return cartItem.price * cartItem.quantity
-    // })
-    // const findTotal = findPrice.reduce(
-    //   (previousValue, currentValue) => previousValue + currentValue,
-    //   initTotal
-    // )
-    // useMemo(() => {
-    //   setInterval(() => {
-    //     setTotal(findTotal)
-    //   }, 1000)
-    // }, [cart])
-    // console.log('total: ', total)
     return (
       <>
         <div className="cart">
           <h1 className="header">Cart</h1>
           <Nav />
-          {loading ? <Loader /> : <CartItems />}
+          {loading ? <Loader /> : <CartItems cart={cart} />}
 
           <section className="checkout">
-            {/* <p>{`Total: $${total}`}</p> */}
-            <Total cart={cart} />
             <form className="goToCheckout">
               <button
                 type="submit"

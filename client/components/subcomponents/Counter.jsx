@@ -9,25 +9,17 @@ export default function Counter({ cartItem }) {
 
     if (name === 'decrement') {
       setCount(() => count - 1)
-      console.log('id hit!: ', cartItem.id)
     } else if (name === 'increment') {
       setCount(() => count + 1)
-      console.log('id hit!: ', cartItem.id)
     }
+
     const fetchItems = localStorage.getItem('cartItem')
     const cartItems = JSON.parse(fetchItems)
 
     const keepSafe = cartItems.filter((z) => cartItem.id != z.id)
-    console.log('Keep Safe: ', keepSafe)
-
     const itemMatch = cartItems.find((x) => cartItem.id === x.id)
-    console.log('Match Found: ', itemMatch)
-
     const newItem = new Object({ ...itemMatch, quantity: count })
-    console.log('new item: ', newItem)
-
     const newArray = [...keepSafe, newItem].sort((a, b) => a.id - b.id)
-    console.log('new array: ', newArray)
 
     localStorage.removeItem('cartItem')
     const updateQuantity = JSON.stringify(newArray)
