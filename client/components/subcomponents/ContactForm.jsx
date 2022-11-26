@@ -3,8 +3,11 @@ import { useNavigate } from 'react-router-dom'
 
 import { postInquiry } from '../../apis/inquiries'
 
+import ContactPopup from './ContactPopup'
+
 export default function ContactForm() {
   const [form, setForm] = useState({ name: '', email: '', inquiry: '' })
+  const [popup, setPopup] = useState(false)
   const navigate = useNavigate()
 
   function handleChange(e) {
@@ -16,14 +19,20 @@ export default function ContactForm() {
     e.preventDefault()
     console.log('handle submit data: ', form)
     postInquiry(form)
-      .then(navigate('/shop'))
-      .catch((err) => {
-        console.error(err)
-      })
+    setPopup(true)
+    setTimeout(() => {
+      setPopup(false)
+      // .then(navigate('/shop'))
+      // .catch((err) => {
+      //   console.error(err)
+      // })
+      navigate('/shop')
+    }, 2500)
   }
 
   return (
     <>
+      {popup ? <ContactPopup /> : null}
       <section className="dbContact">
         <h3>Or, contact directly!</h3>
         <form id="form" noValidate>

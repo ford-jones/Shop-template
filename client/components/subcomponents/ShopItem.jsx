@@ -19,7 +19,7 @@ export default function ShopItem() {
     // console.log('jewelName data: ', jewelName, jewelName.name, x, x.name)
     return x.name == jewelName.name
   })
-  console.log('whichJewelery: ', whichJewelery)
+  // console.log('whichJewelery: ', whichJewelery)
 
   let foundJewelery = new Object({ ...whichJewelery, quantity: 1 })
 
@@ -70,11 +70,6 @@ export default function ShopItem() {
               add to cart
             </button>
           </form>
-          {/* {handleSubmit
-            ? setTimeout(() => {
-                return <ShopPopup foundJewelery={foundJewelery} />
-              }, 300)
-            : null} */}
         </div>
       </div>
     </>
