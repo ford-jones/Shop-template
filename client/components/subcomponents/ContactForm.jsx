@@ -22,10 +22,6 @@ export default function ContactForm() {
     setPopup(true)
     setTimeout(() => {
       setPopup(false)
-      // .then(navigate('/shop'))
-      // .catch((err) => {
-      //   console.error(err)
-      // })
       navigate('/shop')
     }, 2500)
   }
