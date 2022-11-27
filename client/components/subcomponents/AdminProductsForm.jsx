@@ -54,10 +54,7 @@ export default function AdminProductsForm() {
     postJeweleryImage(imageForm)
     postJeweleryText(textForm)
     handleImage(e)
-      .then(navigate('/admin'))
-      .catch((err) => {
-        console.error(err)
-      })
+    navigate('/admin')
   }
 
   return (
