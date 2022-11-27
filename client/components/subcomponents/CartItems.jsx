@@ -12,7 +12,18 @@ export default function CartItems({ cart }) {
 
   function handleCart(e) {
     e.preventDefault()
+    let deleteItem = cartItems.filter((x) => {
+      return x.id != e.target.id
+    })
+
+    localStorage.removeItem('cartItem')
+    let newCartString = JSON.stringify(deleteItem)
+    localStorage.setItem('cartItem', newCartString)
+
     setPopup(true)
+    setTimeout(() => {
+      setPopup(false)
+    }, 2500)
   }
 
   return (
