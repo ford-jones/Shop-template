@@ -1,26 +1,31 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import Counter from './Counter'
 import Total from './Total'
 
+import CartPopup from './CartPopup'
+
 export default function CartItems({ cart }) {
+  const [popup, setPopup] = useState(false)
   const fetchCart = localStorage.getItem('cartItem')
   const cartItems = JSON.parse(fetchCart).sort((a, b) => a.id - b.id)
 
   function handleCart(e) {
     e.preventDefault()
+    setPopup(true)
 
-    let deleteItem = cartItems.filter((x) => {
-      return x.id != e.target.id
-    })
+    // let deleteItem = cartItems.filter((x) => {
+    //   return x.id != e.target.id
+    // })
 
-    localStorage.removeItem('cartItem')
-    let newCartString = JSON.stringify(deleteItem)
-    localStorage.setItem('cartItem', newCartString)
+    // localStorage.removeItem('cartItem')
+    // let newCartString = JSON.stringify(deleteItem)
+    // localStorage.setItem('cartItem', newCartString)
   }
 
   return (
     <>
+      {popup ? <CartPopup setPopup={setPopup} cartItems={cartItems} /> : null}
       {cartItems.map((cartItem) => {
         return (
           <>
