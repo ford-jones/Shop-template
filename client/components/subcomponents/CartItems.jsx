@@ -13,22 +13,14 @@ export default function CartItems({ cart }) {
   function handleCart(e) {
     e.preventDefault()
     setPopup(true)
-
-    // let deleteItem = cartItems.filter((x) => {
-    //   return x.id != e.target.id
-    // })
-
-    // localStorage.removeItem('cartItem')
-    // let newCartString = JSON.stringify(deleteItem)
-    // localStorage.setItem('cartItem', newCartString)
   }
 
   return (
     <>
-      {popup ? <CartPopup setPopup={setPopup} cartItems={cartItems} /> : null}
       {cartItems.map((cartItem) => {
         return (
           <>
+            {popup ? <CartPopup /> : null}
             <img
               className="cartItemImage"
               src={`/images/grill${cartItem.id}.png`}
