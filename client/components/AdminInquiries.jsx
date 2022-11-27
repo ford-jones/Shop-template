@@ -8,19 +8,14 @@ import { getInquiries } from '../apis/inquiries'
 export default function AdminInquiries() {
   const [inquiries, setInquiries] = useState('')
   const [loading, setLoading] = useState(true)
-  const [color, setColor] = useState({ backgroundColor: 'white' })
-
-  console.log(color)
 
   function handleClick(e) {
     e.preventDefault()
-    const findInquiry = inquiries.find((x) => {
-      return x.id == e.target.id
-    })
+
+    const findInquiry = document.getElementById(e.target.id)
 
     if (findInquiry) {
-      console.log(findInquiry)
-      return setColor({ backgroundColor: 'azure' })
+      return (findInquiry.style.backgroundColor = 'lightGray')
     }
   }
 
@@ -48,7 +43,7 @@ export default function AdminInquiries() {
       ) : (
         inquiries.map((user) => (
           <>
-            <div className="contactForm" style={color}>
+            <div id={user.id} className="contactForm">
               <p>inquiry id: {user.id}</p>
               <p>date submitted: {user.date_recieved}</p>
               <p>user name: {user.name}</p>
