@@ -21,11 +21,11 @@ export default function Cart() {
   }
 
   useMemo(() => {
-    setInterval(() => {
+    setTimeout(() => {
       setCart(cartItems)
       setLoading(false)
     }, 3000)
-  }, [cart])
+  }, [cartItems])
 
   if (cartItems <= 0) {
     localStorage.removeItem('cartItem')

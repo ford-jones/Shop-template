@@ -7,17 +7,17 @@ export default function Total({ cart }) {
   const findPrice = cart.map((cartItem) => {
     return cartItem.price * cartItem.quantity
   })
+
   const findTotal = findPrice.reduce(
     (previousValue, currentValue) => previousValue + currentValue,
     initTotal
   )
+
   useEffect(() => {
     setTimeout(() => {
       setTotal(findTotal)
-    }, 3000)
-  }, [cart, total])
-
-  console.log('total: ', total)
+    }, 500)
+  }, [findTotal])
 
   return (
     <>
