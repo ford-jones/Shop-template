@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 export default function checkoutForm() {
-  const [form, setForm] = useState({ name: '' })
+  const [form, setForm] = useState({ email: '' })
 
   function handleChange(e) {
     e.preventDefault()
@@ -11,11 +11,11 @@ export default function checkoutForm() {
   return (
     <div className="checkoutForm">
       <form>
-        <label htmlFor="name">Name</label>
+        <label htmlFor="email">email</label>
         <input
-          name="name"
+          name="email"
           type="text"
-          value={form.name}
+          value={form.email}
           placeholder=" "
           onChange={handleChange}
         ></input>
