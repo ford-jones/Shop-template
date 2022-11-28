@@ -22,11 +22,10 @@ export default function Cart() {
 
   useMemo(() => {
     setTimeout(() => {
-      //  this could possibly be a setTimeout
       setCart(cartItems)
       setLoading(false)
     }, 3000)
-  }, [cartItems]) // if there is a change in cart, cart is then updated. This is probably the cause of the render loop
+  }, [cartItems])
 
   if (cartItems <= 0) {
     localStorage.removeItem('cartItem')
