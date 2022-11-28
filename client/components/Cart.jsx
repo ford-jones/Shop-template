@@ -9,6 +9,7 @@ import CartItems from './subcomponents/CartItems'
 export default function Cart() {
   const [loading, setLoading] = useState(true)
   const [cart, setCart] = useState([])
+
   const navigate = useNavigate()
 
   const fetchCart = localStorage.getItem('cartItem')
@@ -20,11 +21,11 @@ export default function Cart() {
   }
 
   useMemo(() => {
-    setInterval(() => {
+    setTimeout(() => {
       setCart(cartItems)
-      setLoading(false) //  try putting this in it's own setTimeout(), it doesn't need calling more than once
+      setLoading(false)
     }, 3000)
-  }, [cart])
+  }, [cartItems])
 
   if (cartItems <= 0) {
     localStorage.removeItem('cartItem')
@@ -39,25 +40,14 @@ export default function Cart() {
       </>
     )
   } else {
-    const initTotal = 0
-    const total = cart
-      .map((cartItem) => {
-        // make a variable that is = to cartItem.price * cartItem.quantity
-        return cartItem.price * cartItem.quantity
-      })
-      .reduce(
-        (previousValue, currentValue) => previousValue + currentValue,
-        initTotal
-      )
     return (
       <>
         <div className="cart">
           <h1 className="header">Cart</h1>
           <Nav />
-          {loading ? <Loader /> : <CartItems />}
+          {loading ? <Loader /> : <CartItems cart={cart} />}
 
           <section className="checkout">
-            <p>{`Total: $${total}`}</p>
             <form className="goToCheckout">
               <button
                 type="submit"
@@ -73,3 +63,6 @@ export default function Cart() {
     )
   }
 }
+
+// if using states, setTotal needs to be called in a handler fn to avoid infinite loops
+//  the total algorithm should happen inside the counter component

@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react'
-import { useParams, redirect } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 
 import { fetchJewelery, selectJewelery } from '../../slices/jewelery'
 
 import Nav from './Nav'
+import ShopPopup from './ShopPopup'
 
 export default function ShopItem() {
   const [cart, setCart] = useState([])
+  const [popup, setPopup] = useState(false)
   const jewelery = useSelector(selectJewelery)
   const dispatch = useDispatch()
 
@@ -17,7 +19,7 @@ export default function ShopItem() {
     // console.log('jewelName data: ', jewelName, jewelName.name, x, x.name)
     return x.name == jewelName.name
   })
-  console.log('whichJewelery: ', whichJewelery)
+  // console.log('whichJewelery: ', whichJewelery)
 
   let foundJewelery = new Object({ ...whichJewelery, quantity: 1 })
 
@@ -28,7 +30,11 @@ export default function ShopItem() {
     const clickedItem = JSON.stringify(cartData)
     localStorage.setItem('cartItem', clickedItem)
 
-    redirect('/cart')
+    setPopup(true)
+
+    setTimeout(() => {
+      setPopup(false)
+    }, 2500)
   }
 
   console.log('cart: ', cart)
@@ -43,6 +49,8 @@ export default function ShopItem() {
 
   return (
     <>
+      {popup ? <ShopPopup foundJewelery={foundJewelery} /> : null}
+
       <div className="ShopItem">
         <h1 className="header">Shop</h1>
         <Nav />
