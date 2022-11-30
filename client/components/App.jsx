@@ -6,7 +6,6 @@ import Home from './Home'
 import Shop from './Shop'
 import ShopItem from './subcomponents/ShopItem'
 import Cart from './Cart'
-import Checkout from './Checkout'
 import About from './About'
 import Faqs from './Faqs'
 import Contact from './Contact'
@@ -14,6 +13,7 @@ import AdminHome from './AdminHome'
 import AdminInquiries from './AdminInquiries'
 import AdminProducts from './AdminProducts'
 import AdminOrders from './AdminOrders'
+import PaymentSuccess from './subcomponents/PaymentSuccess'
 
 function App() {
   return (
@@ -27,7 +27,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/faq" element={<Faqs />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/payment_success" element={<PaymentSuccess />} />
           <Route path="/admin" element={<AdminHome />} />
           <Route path="/admin/inquiries" element={<AdminInquiries />} />
           <Route path="/admin/products" element={<AdminProducts />} />
