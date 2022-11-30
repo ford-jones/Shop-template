@@ -16,6 +16,6 @@ server.use('/api/v1/images', imageRoute)
 server.use('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, './public/index.html'))
 })
-server.use('/api/v1/pay', stripe)
+server.use('/api/v1/stripe', stripe)
 
 module.exports = server

@@ -4,7 +4,7 @@ const rootUrl = '/api/v1'
 
 export function postPayment(data) {
   return request
-    .post(rootUrl + '/pay')
+    .post(rootUrl + '/stripe')
     .send(data)
     .then((req) => {
       return req.body

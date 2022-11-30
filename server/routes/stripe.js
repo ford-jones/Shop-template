@@ -5,7 +5,7 @@ const router = express.Router()
 // const stripe = Stripe(process.env.STRIPE_KEY)
 const domain = 'http://localhost:3000'
 
-router.post('/', async (req, res) => {
+router.post('/checkout-session', async (req, res) => {
   const session = await stripe.checkout.sessions.create({
     line_items: [
       {
@@ -20,8 +20,8 @@ router.post('/', async (req, res) => {
       },
     ],
     mode: 'payment',
-    success_url: `${domain}/checkout?success=true`,
-    cancel_url: `${domain}/checkout?canceled=true`,
+    success_url: `${domain}?success=true`,
+    cancel_url: `${domain}?canceled=true`,
   })
 
   res.send({ url: session.url })
