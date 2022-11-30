@@ -4,7 +4,7 @@ const path = require('path')
 const jeweleryRoutes = require('./routes/jewelery')
 const inquiryRoutes = require('./routes/inquiries')
 const imageRoute = require('./routes/images')
-const paymentIntent = require('./routes/paymentIntent')
+const stripe = require('./routes/stripe')
 const server = express()
 
 server.use(express.json())
@@ -16,6 +16,6 @@ server.use('/api/v1/images', imageRoute)
 server.use('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, './public/index.html'))
 })
-server.use('/api/v1/pay', paymentIntent)
+server.use('/api/v1/pay', stripe)
 
 module.exports = server
