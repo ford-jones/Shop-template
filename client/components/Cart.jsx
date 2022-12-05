@@ -1,24 +1,17 @@
 import React, { useMemo, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 
 import Nav from './subcomponents/Nav'
 import Loader from './subcomponents/Loader'
 import CartEmpty from './subcomponents/CartEmpty'
 import CartItems from './subcomponents/CartItems'
+import PayButton from './subcomponents/PayButton'
 
 export default function Cart() {
   const [loading, setLoading] = useState(true)
   const [cart, setCart] = useState([])
 
-  const navigate = useNavigate()
-
   const fetchCart = localStorage.getItem('cartItem')
   const cartItems = JSON.parse(fetchCart)
-
-  function handleCheckout(e) {
-    e.preventDefault()
-    navigate('/checkout')
-  }
 
   useMemo(() => {
     setTimeout(() => {
@@ -49,13 +42,7 @@ export default function Cart() {
 
           <section className="checkout">
             <form className="goToCheckout">
-              <button
-                type="submit"
-                className="checkoutButton"
-                onClick={handleCheckout}
-              >
-                Checkout
-              </button>
+              <PayButton cartItems={cartItems} />
             </form>
           </section>
         </div>
