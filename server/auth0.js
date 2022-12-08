@@ -1,10 +1,10 @@
-const { expressjwt } = require('express-jwt')
+const jwt = require('express-jwt')
 const jwks = require('jwks-rsa')
 
 const domain = 'https://ford-jones-development.au.auth0.com'
 const audience = 'https://auth/api'
 
-const checkJwt = expressjwt({
+const checkJwt = jwt({
   secret: jwks.expressJwtSecret({
     cache: true,
     rateLimit: true,
