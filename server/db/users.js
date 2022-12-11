@@ -13,7 +13,8 @@ function userExists(username, db = connection) {
 }
 
 function getUser(id, db = connection) {
-  return db('users').select('username', 'icon').where('auth0_id', id).first()
+  console.log('hit!: from db fn')
+  return db('users').select('username').where('auth0_id', id).first()
 }
 
 function createUser(user, db = connection) {

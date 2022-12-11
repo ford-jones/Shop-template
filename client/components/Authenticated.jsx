@@ -8,6 +8,7 @@ const isAuthenticated = () => {
 }
 
 export function IfAuthenticated({ children }) {
+  console.log('hit!: from auth component')
   return isAuthenticated() ? <>{children}</> : null
 }
 

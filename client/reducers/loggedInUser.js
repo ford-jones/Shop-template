@@ -6,7 +6,7 @@ import {
 const emptyUser = {
   auth0Id: '',
   username: '',
-  icon: '',
+  // icon: '',
 }
 
 export default function user(state = emptyUser, action) {

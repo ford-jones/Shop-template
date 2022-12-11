@@ -5,6 +5,7 @@ const db = require('../db/users')
 const router = express.Router()
 
 router.get('/', (req, res) => {
+  console.log('hit!: from route')
   const auth0_id = req.user?.sub
 
   if (!auth0_id) {

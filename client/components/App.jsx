@@ -29,6 +29,7 @@ function App() {
 
   useEffect(() => {
     if (!isAuthenticated) {
+      // console.log('no auth')
       dispatch(clearLoggedInUser())
     } else {
       getAccessTokenSilently()
