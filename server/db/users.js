@@ -6,9 +6,9 @@ module.exports = {
   createUser,
 }
 
-function userExists(username, db = connection) {
+function userExists(email, db = connection) {
   return db('users')
-    .where('username', username)
+    .where('email', email)
     .then((usersFound) => usersFound.length > 0)
 }
 

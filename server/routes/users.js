@@ -21,22 +21,22 @@ router.get('/', (req, res) => {
 
 router.post('/', checkJwt, (req, res) => {
   const auth0_id = req.user?.sub
-  const { username } = req.body
+  const { email } = req.body
   const userDetails = {
     auth0_id,
-    username,
+    email,
   }
 
-  db.userExists(username)
-    .then((usernameTaken) => {
-      if (usernameTaken) throw new Error('Username Taken')
+  db.userExists(email)
+    .then((emailTaken) => {
+      if (emailTaken) throw new Error('This email already exists.')
     })
     .then(() => db.createUser(userDetails))
     .then(() => res.sendStatus(201))
     .catch((err) => {
       console.error(err)
-      if (err.message === 'Username Taken') {
-        res.status(403).send('Username Taken')
+      if (err.message === 'This email already exists.') {
+        res.status(403).send('This email already exists.')
       } else {
         res.status(500).send(err.message)
       }
