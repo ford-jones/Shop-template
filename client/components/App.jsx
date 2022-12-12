@@ -29,15 +29,14 @@ function App() {
 
   useEffect(() => {
     if (!isAuthenticated) {
-      // console.log('no auth')
+      console.log('no auth')
       dispatch(clearLoggedInUser())
     } else {
+      console.log('auth')
       getAccessTokenSilently()
         .then((token) => getUser(token))
         .then((userInDb) => {
-          userInDb
-            ? dispatch(updateLoggedInUser(userInDb))
-            : navigate('/') && console.log('fail')
+          userInDb ? dispatch(updateLoggedInUser(userInDb)) : navigate('/admin')
         })
         .catch((err) => console.error(err))
     }
