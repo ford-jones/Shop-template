@@ -28,7 +28,7 @@ export default function AdminHome() {
     return (
       <>
         <form>
-          <button type="submit" onClick={handleClick}>
+          <button type="submit" onClick={handleClick} className="loginButton">
             sign in
           </button>
         </form>
