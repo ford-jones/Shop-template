@@ -35,7 +35,9 @@ function App() {
       getAccessTokenSilently()
         .then((token) => getUser(token))
         .then((userInDb) => {
-          userInDb ? dispatch(updateLoggedInUser(userInDb)) : navigate('/')
+          userInDb
+            ? dispatch(updateLoggedInUser(userInDb))
+            : navigate('/') && console.log('fail')
         })
         .catch((err) => console.error(err))
     }

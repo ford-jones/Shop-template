@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     <Auth0Provider
       domain="ford-jones-development.au.auth0.com"
       clientId="MvN3j3g5hHmK2PsIvnU31XUTy6WphYBa"
-      // redirectUri={window.location.origin}
+      redirectUri={`${window.location.origin}/admin`}
       audience="https://auth/api"
     >
       <Provider store={store}>

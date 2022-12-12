@@ -8,11 +8,16 @@ import AdminNav from './subcomponents/AdminNav'
 //  reference the sign in button used in jwt-auth nav.jsx component
 
 export default function AdminHome() {
-  const { isAuthenticated, loginWithRedirect } = useAuth0()
+  const { isAuthenticated, loginWithRedirect, logout } = useAuth0()
 
   function handleClick(e) {
     e.preventDefault()
     loginWithRedirect()
+  }
+
+  function handleLogout(e) {
+    e.preventDefault()
+    logout()
   }
 
   if (!isAuthenticated) {
@@ -21,6 +26,9 @@ export default function AdminHome() {
         <form>
           <button type="submit" onClick={handleClick}>
             sign in
+          </button>
+          <button type="submit" onClick={handleLogout}>
+            logout
           </button>
         </form>
       </>
