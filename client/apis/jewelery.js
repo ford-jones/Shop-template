@@ -22,10 +22,20 @@ export function postJeweleryText(data) {
 export function postJeweleryImage(img) {
   console.log('api function arg: ', img)
   return request
-  .post(rootUrl + '/jewelery')
-  .send(img)
-  .then((req) => {
-    console.log('api return request: ', req)
-    return req
-  })
+    .post(rootUrl + '/jewelery')
+    .send(img)
+    .then((req) => {
+      console.log('api return request: ', req)
+      return req
+    })
+}
+
+export function deleteJewelery(data) {
+  console.log('data from api: ', data)
+  return request
+    .del(rootUrl + '/jewelery')
+    .send(data)
+    .then((req) => {
+      return req.body.jewelery
+    })
 }
