@@ -1,17 +1,17 @@
-import React from 'react'
-import { useNavigate } from 'react-router-dom'
-import {useAuth0} from '@auth0/auth0-react'
+import React, { useState } from 'react'
+import { useAuth0 } from '@auth0/auth0-react'
 
 import AdminNav from './subcomponents/AdminNav'
 import AdminProductsForm from './subcomponents/AdminProductsForm'
+import AdminDelProduct from './subcomponents/AdminDelPopup'
 
 export default function AdminProducts() {
-  const navigate = useNavigate()
-  const {isAuthenticated, loginWithRedirect} = useAuth0()
+  const [popup, setPopup] = useState(false)
+  const { isAuthenticated, loginWithRedirect } = useAuth0()
 
   function handleNavigate(e) {
     e.preventDefault()
-    navigate('/admin')
+    setPopup(true)
   }
 
   function handleSignIn(e) {
@@ -19,10 +19,10 @@ export default function AdminProducts() {
     loginWithRedirect()
   }
 
-  if(isAuthenticated) {
-
+  if (isAuthenticated) {
     return (
       <>
+        {popup ? <AdminDelProduct setPopup={setPopup} /> : null}
         <div className="adminProducts">
           <h1 className="header">Admin: Products</h1>
           <AdminNav />
