@@ -1,13 +1,12 @@
 import React, { useEffect } from 'react'
-
 import { useDispatch, useSelector } from 'react-redux'
 
 import { fetchJewelery, selectJewelery } from '../../slices/jewelery'
+import { deleteJewelery } from '../../apis/jewelery'
 
 export default function adminDelPopup({ setPopup }) {
   const jewelery = useSelector(selectJewelery)
   const dispatch = useDispatch()
-  // const navigate = useNavigate()
 
   function handleClick(e) {
     e.preventDefault()
@@ -16,7 +15,13 @@ export default function adminDelPopup({ setPopup }) {
 
   function handleDelete(e) {
     e.preventDefault()
-    console.log('hit')
+
+    const deleteItem = jewelery.find((x) => {
+      return x.id == e.target.id
+    })
+
+    console.log('data from component: ', deleteItem)
+    deleteJewelery(deleteItem)
   }
 
   useEffect(async () => {
@@ -36,7 +41,7 @@ export default function adminDelPopup({ setPopup }) {
               />
               <p>{jewel.name}</p>
               <form>
-                <button type="submit" onClick={handleDelete}>
+                <button type="submit" onClick={handleDelete} id={jewel.id}>
                   Delete
                 </button>
               </form>
