@@ -14,22 +14,33 @@ export default function adminDelPopup({ setPopup }) {
     setPopup(false)
   }
 
+  function handleDelete(e) {
+    e.preventDefault()
+    console.log('hit')
+  }
+
   useEffect(async () => {
     await dispatch(fetchJewelery())
   }, [])
 
   return (
     <>
-      <div className="popup">
+      <div className="delPopup">
         {jewelery.map((jewel) => (
           <>
-            <img
-              className="productImage"
-              src={`/images/grill${jewel.id}.png`}
-              alt="jewelPhoto"
-            />
-            <p>{jewel.name}</p>
-            <p>{`$${jewel.price}`}</p>
+            <div className="delProduct">
+              <img
+                className="delProductImage"
+                src={`/images/grill${jewel.id}.png`}
+                alt="jewelPhoto"
+              />
+              <p>{jewel.name}</p>
+              <form>
+                <button type="submit" onClick={handleDelete}>
+                  Delete
+                </button>
+              </form>
+            </div>
           </>
         ))}
         <form>
