@@ -43,4 +43,19 @@ router.post('/single', upload.single('image'), (req, res) => {
   res.sendStatus(201)
 })
 
+router.delete('/', (req, res) => {
+  // const jewel = req.body.jewelery
+  const jewel = req.body
+  console.log('route data: ', jewel)
+
+  db.deleteJewelery(jewel)
+    .then(() => {
+      res.sendStatus(201)
+      return null
+    })
+    .catch((err) => {
+      console.log(err)
+      res.sendStatus(500).json({ message: 'something went wrong' })
+    })
+})
 module.exports = router
