@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { fetchJewelery, selectJewelery } from '../../slices/jewelery'
-import { deleteJewelery } from '../../apis/jewelery'
+import { fetchProducts, selectProducts } from '../../slices/products'
+import { deleteProducts } from '../../apis/products'
 
 export default function adminDelPopup({ setPopup }) {
-  const jewelery = useSelector(selectJewelery)
+  const products = useSelector(selectProducts)
   const dispatch = useDispatch()
 
   function handleClick(e) {
@@ -16,32 +16,32 @@ export default function adminDelPopup({ setPopup }) {
   function handleDelete(e) {
     e.preventDefault()
 
-    const deleteItem = jewelery.find((x) => {
+    const deleteItem = products.find((x) => {
       return x.id == e.target.id
     })
 
     console.log('data from component: ', deleteItem)
-    deleteJewelery(deleteItem)
+    deleteProducts(deleteItem)
   }
 
   useEffect(async () => {
-    await dispatch(fetchJewelery())
+    await dispatch(fetchProducts())
   }, [])
 
   return (
     <>
       <div className="delPopup">
-        {jewelery.map((jewel) => (
+        {products.map((product) => (
           <>
             <div className="delProduct">
               <img
                 className="delProductImage"
-                src={`/images/grill${jewel.id}.png`}
-                alt="jewelPhoto"
+                src={`/images/product${product.id}.png`}
+                alt="productPhoto"
               />
-              <p>{jewel.name}</p>
+              <p>{product.name}</p>
               <form>
-                <button type="submit" onClick={handleDelete} id={jewel.id}>
+                <button type="submit" onClick={handleDelete} id={product.id}>
                   Delete
                 </button>
               </form>

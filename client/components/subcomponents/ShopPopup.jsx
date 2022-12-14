@@ -1,10 +1,10 @@
 import React from 'react'
 
-export default function shopPopup({ foundJewelery }) {
+export default function shopPopup({ foundProduct }) {
   return (
     <>
       <div className="popup">
-        <h3>{foundJewelery.name} was added to your cart!</h3>
+        <h3>{foundProduct.name} was added to your cart!</h3>
       </div>
     </>
   )

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 
-import { fetchJewelery, selectJewelery } from '../../slices/jewelery'
+import { fetchProducts, selectProducts } from '../../slices/products'
 
 import Nav from './Nav'
 import ShopPopup from './ShopPopup'
@@ -10,23 +10,21 @@ import ShopPopup from './ShopPopup'
 export default function ShopItem() {
   const [cart, setCart] = useState([])
   const [popup, setPopup] = useState(false)
-  const jewelery = useSelector(selectJewelery)
+  const product = useSelector(selectProducts)
   const dispatch = useDispatch()
 
   const name = useParams()
-  let jewelName = name
-  let whichJewelery = jewelery.find((x) => {
-    // console.log('jewelName data: ', jewelName, jewelName.name, x, x.name)
-    return x.name == jewelName.name
+  let productName = name
+  let whichProduct = product.find((x) => {
+    return x.name == productName.name
   })
-  // console.log('whichJewelery: ', whichJewelery)
 
-  let foundJewelery = new Object({ ...whichJewelery, quantity: 1 })
+  let foundProduct = new Object({ ...whichProduct, quantity: 1 })
 
   function handleSubmit(e) {
     // console.log('hit!')
     e.preventDefault()
-    const cartData = [...cart, foundJewelery]
+    const cartData = [...cart, foundProduct]
     const clickedItem = JSON.stringify(cartData)
     localStorage.setItem('cartItem', clickedItem)
 
@@ -39,7 +37,7 @@ export default function ShopItem() {
 
   console.log('cart: ', cart)
   useEffect(async () => {
-    await dispatch(fetchJewelery())
+    await dispatch(fetchProducts())
 
     console.log('hit')
     const fetchCart = localStorage.getItem('cartItem')
@@ -49,22 +47,22 @@ export default function ShopItem() {
 
   return (
     <>
-      {popup ? <ShopPopup foundJewelery={foundJewelery} /> : null}
+      {popup ? <ShopPopup foundProduct={foundProduct} /> : null}
 
       <div className="ShopItem">
         <h1 className="header">Shop</h1>
         <Nav />
         <img
           className="shopItemImage"
-          src={`/images/grill${foundJewelery.id}.png`}
-          alt="jewelPhoto"
+          src={`/images/product${foundProduct.id}.png`}
+          alt="productPhoto"
         />
         <div className="shopItemText">
-          <p>{foundJewelery.name}</p>
-          <p>{foundJewelery.materials}</p>
-          <p>{foundJewelery.description}</p>
-          <p>{foundJewelery.weight}</p>
-          <p>{`$${foundJewelery.price}`}</p>
+          <p>{foundProduct.name}</p>
+          <p>{foundProduct.materials}</p>
+          <p>{foundProduct.description}</p>
+          <p>{foundProduct.weight}</p>
+          <p>{`$${foundProduct.price}`}</p>
           <form className="addToCart">
             <button type="submit" className="cartButton" onClick={handleSubmit}>
               add to cart
