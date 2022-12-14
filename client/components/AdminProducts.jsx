@@ -4,19 +4,15 @@ import { useAuth0 } from '@auth0/auth0-react'
 import AdminNav from './subcomponents/AdminNav'
 import AdminProductsForm from './subcomponents/AdminProductsForm'
 import AdminDelProduct from './subcomponents/AdminDelPopup'
+import AdminSignIn from './subcomponents/AdminSignIn'
 
 export default function AdminProducts() {
   const [popup, setPopup] = useState(false)
-  const { isAuthenticated, loginWithRedirect } = useAuth0()
+  const { isAuthenticated } = useAuth0()
 
   function handleNavigate(e) {
     e.preventDefault()
     setPopup(true)
-  }
-
-  function handleSignIn(e) {
-    e.preventDefault()
-    loginWithRedirect()
   }
 
   if (isAuthenticated) {
@@ -44,14 +40,6 @@ export default function AdminProducts() {
       </>
     )
   } else {
-    return (
-      <>
-        <form>
-          <button type="submit" onClick={handleSignIn} className="loginButton">
-            sign in
-          </button>
-        </form>
-      </>
-    )
+    return <AdminSignIn />
   }
 }

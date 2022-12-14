@@ -1,16 +1,13 @@
 import React from 'react'
-import {useAuth0} from '@auth0/auth0-react'
+import { useAuth0 } from '@auth0/auth0-react'
 
 import AdminNav from './subcomponents/AdminNav'
+import AdminSignIn from './subcomponents/AdminSignIn'
 
 export default function AdminOrders() {
-  const {isAuthenticated, loginWithRedirect} = useAuth0()
+  const { isAuthenticated } = useAuth0()
 
-  function handleSignIn(e) {
-    e.preventDefault()
-    loginWithRedirect()
-  }
-  if(isAuthenticated) {
+  if (isAuthenticated) {
     return (
       <>
         <h1 className="header">Admin: Orders</h1>
@@ -23,16 +20,7 @@ export default function AdminOrders() {
         </p>
       </>
     )
-
   } else {
-    return (
-      <>
-        <form>
-          <button type="submit" onClick={handleSignIn} className="loginButton">
-            sign in
-          </button>
-        </form>
-      </>
-    )
+    return <AdminSignIn />
   }
 }
