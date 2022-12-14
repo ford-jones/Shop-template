@@ -25,15 +25,16 @@ body {
 
 .home {
   background-image: url('../images/home.jpg');
-  background-size: 1500px, 1500px;
+  background-size: cover;
+  background-origin: content-box;
   width: 1350px;
-  height: 740px; 
+  height: 870px; 
   padding: 10px;
   margin: 0px;
   z-index: 0;
 }
 
-.stgmataHome {
+.homeText {
   font-family: 'Times New Roman', Times, serif;
   font-size: 90px;
   font-style: italic;
@@ -77,6 +78,8 @@ body {
 
 .shopItemImage {
   position: absolute;
+  height: 400px;
+  width: 520px;
 }
 
 .contact {
@@ -113,7 +116,6 @@ body {
 .cartItemImage {
   height: 150px;
   width: 150px; 
-  /* float: right; */
   left: 40%;
   position: relative;
   flex-direction: row;

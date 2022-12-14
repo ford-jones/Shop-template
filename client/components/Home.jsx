@@ -8,13 +8,8 @@ export default function Home() {
       <div className="home">
         <h1 className="header">Home</h1>
         <Nav />
-        <h2 className="stgmataHome">STGMATA</h2>
-        <p className="text">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia
-          sequi neque quam rem consequuntur exercitationem. Veritatis quaerat in
-          fugit. Dignissimos dolorem incidunt at error quos eveniet dolores
-          consectetur deserunt reiciendis.
-        </p>
+        <h2 className="homeText">DIGI PORTAL.</h2>
+        <p className="text">Made by Ford Jones 2022.</p>
       </div>
     </>
   )

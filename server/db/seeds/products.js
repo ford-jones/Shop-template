@@ -8,29 +8,26 @@ exports.seed = function (knex) {
         {
           id: 1,
           name: 'product1',
-          materials: 'sterling silver, diamonds',
-          description:
-            'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia sequi neque quam rem consequuntur exercitationem. Veritatis quaerat in fugit. Dignissimos dolorem incidunt at error quos eveniet dolores consectetur deserunt reiciendis.',
+          materials: 'chess piece material, probably plastic',
+          description: 'Lorem ipsum a singular black bishop.',
           weight: '230g',
-          price: 2200,
+          price: 30,
         },
         {
           id: 2,
           name: 'product2',
-          materials: '24k gold',
-          description:
-            'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia sequi neque quam rem consequuntur exercitationem. Veritatis quaerat in fugit. Dignissimos dolorem incidunt at error quos eveniet dolores consectetur deserunt reiciendis.',
-          weight: '200g',
-          price: 3000,
+          materials: 'Cat, human, faceswap AI.',
+          description: 'Cat human hybrid non-refundable.',
+          weight: '5kg',
+          price: 50,
         },
         {
           id: 3,
           name: 'product3',
-          materials: 'sterling silver',
-          description:
-            'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia sequi neque quam rem consequuntur exercitationem. Veritatis quaerat in fugit. Dignissimos dolorem incidunt at error quos eveniet dolores consectetur deserunt reiciendis.',
+          materials: 'Television.',
+          description: 'Person watching TV and enjoying it.',
           weight: '190g',
-          price: 1600,
+          price: 120,
         },
       ])
     })
