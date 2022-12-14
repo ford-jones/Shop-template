@@ -2,14 +2,10 @@ import React from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
 
 import AdminNav from './subcomponents/AdminNav'
+import AdminSignIn from './subcomponents/AdminSignIn'
 
 export default function AdminHome() {
-  const { isAuthenticated, loginWithRedirect } = useAuth0()
-
-  function handleClick(e) {
-    e.preventDefault()
-    loginWithRedirect()
-  }
+  const { isAuthenticated } = useAuth0()
 
   if (isAuthenticated) {
     return (
@@ -25,14 +21,6 @@ export default function AdminHome() {
       </>
     )
   } else {
-    return (
-      <>
-        <form>
-          <button type="submit" onClick={handleClick} className="loginButton">
-            sign in
-          </button>
-        </form>
-      </>
-    )
+    return <AdminSignIn />
   }
 }

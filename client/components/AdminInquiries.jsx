@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react'
-import {useAuth0} from '@auth0/auth0-react'
+import { useAuth0 } from '@auth0/auth0-react'
 
 import AdminNav from './subcomponents/AdminNav'
 import Loader from './subcomponents/Loader'
+import AdminSignIn from './subcomponents/AdminSignIn'
 
 import { getInquiries } from '../apis/inquiries'
 
 export default function AdminInquiries() {
   const [inquiries, setInquiries] = useState('')
   const [loading, setLoading] = useState(true)
-  const {loginWithRedirect, isAuthenticated} = useAuth0()
+  const { isAuthenticated } = useAuth0()
 
   function handleClick(e) {
     e.preventDefault()
@@ -19,11 +20,6 @@ export default function AdminInquiries() {
     if (findInquiry) {
       return (findInquiry.style.backgroundColor = 'lightGray')
     }
-  }
-
-  function handleSignIn(e) {
-    e.preventDefault()
-    loginWithRedirect()
   }
 
   useEffect(() => {
@@ -39,10 +35,8 @@ export default function AdminInquiries() {
       console.log(err)
     }
   }, [inquiries])
-  // console.log('inquiries: ', inquiries, typeof inquiries)
 
-  if(isAuthenticated){
-
+  if (isAuthenticated) {
     return (
       <>
         <h1 className="header">Admin: Inquiries</h1>
@@ -71,14 +65,6 @@ export default function AdminInquiries() {
       </>
     )
   } else {
-    return (
-      <>
-        <form>
-          <button type="submit" onClick={handleSignIn} className="loginButton">
-            sign in
-          </button>
-        </form>
-      </>
-    )
+    return <AdminSignIn />
   }
 }
