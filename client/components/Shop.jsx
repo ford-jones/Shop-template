@@ -5,32 +5,32 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import Nav from './subcomponents/Nav'
 
-import { fetchJewelery, selectJewelery } from '../slices/jewelery'
+import { fetchProducts, selectProducts } from '../slices/products'
 
 export default function Shop() {
-  const jewelery = useSelector(selectJewelery)
+  const products = useSelector(selectProducts)
   const dispatch = useDispatch()
   // const navigate = useNavigate()
 
   useEffect(async () => {
-    await dispatch(fetchJewelery())
+    await dispatch(fetchProducts())
   }, [])
 
   return (
     <>
       <h1 className="header">Shop</h1>
       <Nav />
-      {jewelery.map((jewel) => (
+      {products.map((product) => (
         <>
           <div className="product">
-            <Link to={`/shop/${jewel.name}`}>
+            <Link to={`/shop/${product.name}`}>
               <img
                 className="productImage"
-                src={`/images/grill${jewel.id}.png`}
-                alt="jewelPhoto"
+                src={`/images/product${product.id}.png`}
+                alt="productPhoto"
               />
-              <p>{jewel.name}</p>
-              <p>{`$${jewel.price}`}</p>
+              <p>{product.name}</p>
+              <p>{`$${product.price}`}</p>
             </Link>
             <Outlet />
           </div>

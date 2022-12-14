@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { postJeweleryText } from '../../apis/jewelery'
-import { postJeweleryImage } from '../../apis/images'
+import { postProductText } from '../../apis/products'
+import { postProductImage } from '../../apis/images'
 
 export default function AdminProductsForm() {
   const navigate = useNavigate()
@@ -51,8 +51,8 @@ export default function AdminProductsForm() {
   function handleSubmit(e) {
     e.preventDefault()
     console.log('new product: ', textForm)
-    postJeweleryImage(imageForm)
-    postJeweleryText(textForm)
+    postProductImage(imageForm)
+    postProductText(textForm)
     handleImage(e)
     navigate('/admin')
   }

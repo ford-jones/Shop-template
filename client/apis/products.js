@@ -2,27 +2,27 @@ import request from 'superagent'
 
 const rootUrl = '/api/v1'
 
-export function getJewelery() {
-  return request.get(rootUrl + '/jewelery').then((res) => {
-    return res.body.jewelery
+export function getProducts() {
+  return request.get(rootUrl + '/products').then((res) => {
+    return res.body.products
   })
 }
 
-export function postJeweleryText(data) {
+export function postProductText(data) {
   console.log('api data: ', data)
 
   return request
-    .post(rootUrl + '/jewelery')
+    .post(rootUrl + '/products')
     .send(data)
     .then((req) => {
-      return req.body.jewelery
+      return req.body.products
     })
 }
 
-export function postJeweleryImage(img) {
+export function postProductImage(img) {
   console.log('api function arg: ', img)
   return request
-    .post(rootUrl + '/jewelery')
+    .post(rootUrl + '/products')
     .send(img)
     .then((req) => {
       console.log('api return request: ', req)
@@ -30,12 +30,12 @@ export function postJeweleryImage(img) {
     })
 }
 
-export function deleteJewelery(data) {
+export function deleteProducts(data) {
   console.log('data from api: ', data)
   return request
-    .del(rootUrl + '/jewelery')
+    .del(rootUrl + '/products')
     .send(data)
     .then((req) => {
-      return req.body.jewelery
+      return req.body.products
     })
 }

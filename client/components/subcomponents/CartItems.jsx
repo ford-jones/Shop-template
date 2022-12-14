@@ -34,8 +34,8 @@ export default function CartItems({ cart }) {
             {popup ? <CartPopup /> : null}
             <img
               className="cartItemImage"
-              src={`/images/grill${cartItem.id}.png`}
-              alt="jewelPhoto"
+              src={`/images/product${cartItem.id}.png`}
+              alt="productPhoto"
             />
             <p>{cartItem.name}</p>
             <p>{cartItem.material}</p>

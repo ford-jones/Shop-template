@@ -1,6 +1,6 @@
 const express = require('express')
 const multer = require('multer')
-const db = require('../db/jewelery')
+const db = require('../db/products')
 const router = express.Router()
 
 const storageEngine = multer.diskStorage({
@@ -11,9 +11,9 @@ const storageEngine = multer.diskStorage({
 const upload = multer({ storage: storageEngine })
 
 router.get('*', (req, res) => {
-  db.getJewelery()
+  db.getProducts()
     .then((results) => {
-      res.json({ jewelery: results.map((jewel) => jewel) })
+      res.json({ products: results.map((product) => product) })
       return null
     })
     .catch((err) => {
@@ -23,10 +23,10 @@ router.get('*', (req, res) => {
 })
 
 router.post('/', (req, res) => {
-  let jewel = req.body
+  let product = req.body
 
-  console.log('route data: ', jewel)
-  db.addJewelery(jewel)
+  console.log('route data: ', product)
+  db.addProducts(product)
 
     .then(() => {
       res.sendStatus(201)
@@ -44,11 +44,10 @@ router.post('/single', upload.single('image'), (req, res) => {
 })
 
 router.delete('/', (req, res) => {
-  // const jewel = req.body.jewelery
-  const jewel = req.body
-  console.log('route data: ', jewel)
+  const product = req.body
+  console.log('route data: ', product)
 
-  db.deleteJewelery(jewel)
+  db.deleteProducts(product)
     .then(() => {
       res.sendStatus(201)
       return null
