@@ -8,6 +8,7 @@ exports.seed = function (knex) {
         {
           id: 1,
           name: 'product1',
+          unique_name: 'Chess Piece',
           materials: 'chess piece material, probably plastic',
           description: 'Lorem ipsum a singular black bishop.',
           weight: '230g',
@@ -15,6 +16,7 @@ exports.seed = function (knex) {
         },
         {
           id: 2,
+          unique_name: 'pet (bi0-hacked)',
           name: 'product2',
           materials: 'Cat, human, faceswap AI.',
           description: 'Cat human hybrid non-refundable.',
@@ -23,6 +25,7 @@ exports.seed = function (knex) {
         },
         {
           id: 3,
+          unique_name: 'Person at home',
           name: 'product3',
           materials: 'Television.',
           description: 'Person watching TV and enjoying it.',

@@ -9,6 +9,7 @@ function addProducts(product, db = connection) {
   return db('products')
     .insert({
       name: product.name,
+      unique_name: product.unique_name,
       materials: product.materials,
       description: product.description,
       weight: product.weight,

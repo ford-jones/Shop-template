@@ -37,7 +37,7 @@ export default function CartItems({ cart }) {
               src={`/images/product${cartItem.id}.png`}
               alt="productPhoto"
             />
-            <p>{cartItem.name}</p>
+            <p>{cartItem.unique_name}</p>
             <p>{cartItem.material}</p>
             <p>{`$${cartItem.price}`}</p>
             <section>
