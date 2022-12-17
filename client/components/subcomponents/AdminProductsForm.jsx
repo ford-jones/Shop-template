@@ -13,6 +13,7 @@ export default function AdminProductsForm() {
   })
   const [textForm, setTextForm] = useState({
     name: '',
+    unique_name: '',
     materials: '',
     description: '',
     weight: '',
@@ -68,8 +69,18 @@ export default function AdminProductsForm() {
             <input
               type="text"
               name="name"
-              placeholder=" "
+              placeholder={`Must be "product"(number)`}
               value={textForm.name}
+              onChange={handleChange}
+            ></input>
+            <label htmlFor="unique_name" noValidate>
+              Unique Name
+            </label>
+            <input
+              type="text"
+              name="unique_name"
+              placeholder=""
+              value={textForm.unique_name}
               onChange={handleChange}
             ></input>
             <label htmlFor="materials" noValidate>
