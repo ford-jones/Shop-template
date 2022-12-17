@@ -58,7 +58,7 @@ export default function ShopItem() {
           alt="productPhoto"
         />
         <div className="shopItemText">
-          <p>{foundProduct.name}</p>
+          <p>{foundProduct.unique_name}</p>
           <p>{foundProduct.materials}</p>
           <p>{foundProduct.description}</p>
           <p>{foundProduct.weight}</p>

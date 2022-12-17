@@ -39,7 +39,7 @@ export default function adminDelPopup({ setPopup }) {
                 src={`/images/product${product.id}.png`}
                 alt="productPhoto"
               />
-              <p>{product.name}</p>
+              <p>{product.unique_name}</p>
               <form>
                 <button type="submit" onClick={handleDelete} id={product.id}>
                   Delete

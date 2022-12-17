@@ -29,7 +29,7 @@ export default function Shop() {
                 src={`/images/product${product.id}.png`}
                 alt="productPhoto"
               />
-              <p>{product.name}</p>
+              <p>{product.unique_name}</p>
               <p>{`$${product.price}`}</p>
             </Link>
             <Outlet />
