@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-// import { useNavigate } from 'react-router-dom'
 import { Link, Outlet } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 
@@ -10,7 +9,6 @@ import { fetchProducts, selectProducts } from '../slices/products'
 export default function Shop() {
   const products = useSelector(selectProducts)
   const dispatch = useDispatch()
-  // const navigate = useNavigate()
 
   useEffect(async () => {
     await dispatch(fetchProducts())

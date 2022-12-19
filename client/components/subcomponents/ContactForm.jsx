@@ -13,11 +13,10 @@ export default function ContactForm() {
   function handleChange(e) {
     setForm({ ...form, [e.target.name]: e.target.value })
   }
-  // console.log(form)
 
   function handleSubmit(e) {
     e.preventDefault()
-    console.log('handle submit data: ', form)
+
     postInquiry(form)
     setPopup(true)
     setTimeout(() => {

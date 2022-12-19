@@ -2,7 +2,6 @@ const stripe = require('stripe')('sk_test_xLhH7sntJEJFllhPZwbGU0Sj')
 const express = require('express')
 const router = express.Router()
 
-// const stripe = Stripe(process.env.STRIPE_KEY)
 const domain = 'http://localhost:3000'
 
 router.post('/create-checkout-session', async (req, res) => {
@@ -19,7 +18,6 @@ router.post('/create-checkout-session', async (req, res) => {
     }
   })
 
-  console.log('route hit!')
   const session = await stripe.checkout.sessions.create({
     shipping_address_collection: { allowed_countries: ['US', 'NZ', 'AU'] },
     shipping_options: [

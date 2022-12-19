@@ -50,6 +50,3 @@ export default function Cart() {
     )
   }
 }
-
-// if using states, setTotal needs to be called in a handler fn to avoid infinite loops
-//  the total algorithm should happen inside the counter component

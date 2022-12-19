@@ -16,11 +16,9 @@ router.get('*', (req, res) => {
     })
 })
 
-// create a post route that sends the body of the inputs on the /contact route to the db
 router.post('/', (req, res) => {
   let inquiry = req.body
 
-  console.log('route data: ', inquiry)
   db.addInquiry(inquiry)
 
     .then(() => {
