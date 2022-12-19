@@ -16,7 +16,6 @@ export default function payButton({ cartItems }) {
       .catch((err) => {
         console.error(err)
       })
-    console.log(cartItems)
   }
 
   return <button onClick={handleClick}>Go to payment</button>

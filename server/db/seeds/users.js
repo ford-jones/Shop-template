@@ -10,5 +10,3 @@ exports.seed = (knex) => {
       ])
     )
 }
-// this is a test account using the test api key
-// the password is Giveaccess1234

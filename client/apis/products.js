@@ -9,8 +9,6 @@ export function getProducts() {
 }
 
 export function postProductText(data) {
-  console.log('api data: ', data)
-
   return request
     .post(rootUrl + '/products')
     .send(data)
@@ -20,18 +18,15 @@ export function postProductText(data) {
 }
 
 export function postProductImage(img) {
-  console.log('api function arg: ', img)
   return request
     .post(rootUrl + '/products')
     .send(img)
     .then((req) => {
-      console.log('api return request: ', req)
       return req
     })
 }
 
 export function deleteProducts(data) {
-  console.log('data from api: ', data)
   return request
     .del(rootUrl + '/products')
     .send(data)

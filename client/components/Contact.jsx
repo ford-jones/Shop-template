@@ -9,7 +9,6 @@ export default function Contact() {
       <div className="contact">
         <h1 className="header">Contact</h1>
         <Nav />
-        {/*instagram, email & inputs for name, email and an inquiry which will be sent to the db*/}
         <div className="socialMedia">
           <section className="igContact">
             <h3>instagram</h3>

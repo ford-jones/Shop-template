@@ -5,7 +5,6 @@ function getProducts(db = connection) {
 }
 
 function addProducts(product, db = connection) {
-  console.log('db.js data: ', product)
   return db('products')
     .insert({
       name: product.name,
@@ -19,7 +18,6 @@ function addProducts(product, db = connection) {
 }
 
 function deleteProducts(product, db = connection) {
-  console.log('db.js data: ', product)
   return db('products').where('id', product.id).del()
 }
 

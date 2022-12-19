@@ -25,7 +25,6 @@ router.get('*', (req, res) => {
 router.post('/', (req, res) => {
   let product = req.body
 
-  console.log('route data: ', product)
   db.addProducts(product)
 
     .then(() => {
@@ -39,13 +38,11 @@ router.post('/', (req, res) => {
 })
 
 router.post('/single', upload.single('image'), (req, res) => {
-  console.log('route data: ', req.file)
   res.sendStatus(201)
 })
 
 router.delete('/', (req, res) => {
   const product = req.body
-  console.log('route data: ', product)
 
   db.deleteProducts(product)
     .then(() => {

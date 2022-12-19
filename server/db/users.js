@@ -13,7 +13,6 @@ function userExists(email, db = connection) {
 }
 
 function getUser(id, db = connection) {
-  console.log('hit!: from db fn')
   return db('users').select('username').where('auth0_id', id).first()
 }
 

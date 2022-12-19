@@ -22,7 +22,6 @@ export default function ShopItem() {
   let foundProduct = new Object({ ...whichProduct, quantity: 1 })
 
   function handleSubmit(e) {
-    // console.log('hit!')
     e.preventDefault()
     const cartData = [...cart, foundProduct]
     const clickedItem = JSON.stringify(cartData)
@@ -35,11 +34,9 @@ export default function ShopItem() {
     }, 2500)
   }
 
-  console.log('cart: ', cart)
   useEffect(async () => {
     await dispatch(fetchProducts())
 
-    console.log('hit')
     const fetchCart = localStorage.getItem('cartItem')
     const cartItems = JSON.parse(fetchCart)
     setCart(cartItems ? cartItems : [])

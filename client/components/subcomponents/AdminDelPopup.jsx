@@ -20,7 +20,6 @@ export default function adminDelPopup({ setPopup }) {
       return x.id == e.target.id
     })
 
-    console.log('data from component: ', deleteItem)
     deleteProducts(deleteItem)
   }
 

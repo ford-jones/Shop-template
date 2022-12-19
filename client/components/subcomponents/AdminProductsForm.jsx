@@ -51,7 +51,6 @@ export default function AdminProductsForm() {
 
   function handleSubmit(e) {
     e.preventDefault()
-    console.log('new product: ', textForm)
     postProductImage(imageForm)
     postProductText(textForm)
     handleImage(e)
