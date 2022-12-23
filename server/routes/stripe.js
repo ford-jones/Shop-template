@@ -1,8 +1,11 @@
+const process = require('dotenv').config({ path: `${__dirname}/../../.env` })
 const stripe = require('stripe')('sk_test_xLhH7sntJEJFllhPZwbGU0Sj')
 const express = require('express')
 const router = express.Router()
 
-const domain = 'http://localhost:3000'
+// console.log('env variable: ', process.env.NODE_ENV)
+const domain = `${process.env.REACT_APP_DOMAIN_NAME}`
+console.log('domain: ', domain)
 
 router.post('/create-checkout-session', async (req, res) => {
   const line_items = req.body.cartItems.map((item) => {

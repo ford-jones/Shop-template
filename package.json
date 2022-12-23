@@ -38,18 +38,20 @@
     ]
   },
   "dependencies": {
+    "@auth0/auth0-react": "^1.8.0",
     "@stripe/react-stripe-js": "^1.15.0",
     "@stripe/stripe-js": "^1.44.1",
     "axios": "^1.2.0",
+    "dotenv": "^16.0.3",
     "express": "^4.17.2",
+    "express-jwt": "^6.1.0",
+    "express-jwt-authz": "^2.4.1",
+    "jwks-rsa": "^2.0.4",
     "knex": "^2.1.0",
     "multer": "^1.4.5-lts.1",
     "pg": "^8.7.1",
+    "react-scripts": "^0.2.3",
     "sqlite3": "^5.0.8",
-    "@auth0/auth0-react": "^1.8.0",
-    "jwks-rsa": "^2.0.4",
-    "express-jwt": "^6.1.0",
-    "express-jwt-authz": "^2.4.1",
     "superagent": "7.1.1"
   },
   "devDependencies": {
