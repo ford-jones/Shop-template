@@ -10,7 +10,7 @@ export default function AdminProducts() {
   const [popup, setPopup] = useState(false)
   const { isAuthenticated } = useAuth0()
 
-  function handleNavigate(e) {
+  function handlePopup(e) {
     e.preventDefault()
     setPopup(true)
   }
@@ -31,8 +31,8 @@ export default function AdminProducts() {
           <AdminProductsForm />
           <section className="deleteProduct">
             <form className="removeProduct">
-              <button type="submit" onClick={handleNavigate} className="button">
-                Delete items:
+              <button type="submit" onClick={handlePopup} className="button">
+                Delete items
               </button>
             </form>
           </section>
