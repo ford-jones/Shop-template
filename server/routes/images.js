@@ -20,8 +20,10 @@ router.post('/', fileUpload.single('image'), (req, res) => {
 })
 
 //  new code, unchecked
+//  changed fs.unlink(`${filePath}/${req.body.name}.png`) on line 25
+//  if this doesnt work try JSON.stringify() inside of the component instead of sending String
 router.delete('/', (req, res) => {
-  fs.unlink(`${filePath}/${req.body.name}.png`)
+  fs.unlink(`${filePath}/${req.body}`)
   res.sendStatus(201)
   console.log('route req: ', req)
   console.log('route res: ', res)
