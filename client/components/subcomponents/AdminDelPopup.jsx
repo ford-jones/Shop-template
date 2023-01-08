@@ -2,7 +2,8 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { fetchProducts, selectProducts } from '../../slices/products'
-import { deleteProducts } from '../../apis/products'
+// import deleteProductImage from the api
+import { deleteProduct } from '../../apis/products'
 
 export default function adminDelPopup({ setPopup }) {
   const products = useSelector(selectProducts)
@@ -20,7 +21,8 @@ export default function adminDelPopup({ setPopup }) {
       return x.id == e.target.id
     })
 
-    deleteProducts(deleteItem)
+    deleteProduct(deleteItem)
+    // deleteProductImage(`product${deleteItem.id}.png`)
   }
 
   useEffect(async () => {

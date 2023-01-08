@@ -26,11 +26,23 @@ export function postProductImage(img) {
     })
 }
 
-export function deleteProducts(data) {
+export function deleteProduct(data) {
   return request
     .del(rootUrl + '/products')
     .send(data)
     .then((req) => {
       return req.body.products
+    })
+}
+
+// Hits the api
+export function deleteProductImage(img) {
+  console.log('api img: ', img)
+  return request
+    .del(rootUrl + '/products')
+    .send(img)
+    .then((req) => {
+      console.log('api req.body: ', req.body)
+      return req.body.data
     })
 }
